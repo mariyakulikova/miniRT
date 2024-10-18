@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:26:30 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/18 13:27:53 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/10/18 18:19:47 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	close_window(t_window *win)
 	mlx_destroy_image(win->mlx_ptr, win->img.ptr);
 	mlx_destroy_window(win->mlx_ptr, win->win_ptr);
 	mlx_destroy_display(win->mlx_ptr);
-	// free_params(win);
+	free(win);
 	exit (0);
 }
 

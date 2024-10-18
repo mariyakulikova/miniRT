@@ -3,7 +3,12 @@ CC = cc
 CFLAGS  = -Wall -Wextra -Werror -g
 LDFLAGS = -Llibft -lft
 LGFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd -lz
-CFILE = main
+
+CFILE = main \
+		vector/1_vec \
+		window/hook \
+		window/win
+
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))
 OBJS = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
 HEADER = inc/minirt.h
