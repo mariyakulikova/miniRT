@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/18 12:44:19 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/10/18 10:50:52 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/10/18 12:36:39 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-# include <math.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
+#ifndef VECTOR_H
+# define VECTOR_H
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <errno.h>
-# include "../libft/libft.h"
+struct s_point
+{
+	double	x;
+	double	y;
+	double	z;
+};
 
-# include "vector.h"
-# include "window.h"
+typedef struct s_point	t_vector;
+typedef struct s_point	t_point;
 
+t_vector	*new_vec(double x, double y, double z);
+t_vector	*vec_sub(t_vector *v1, t_vector *v2);
+double		vec_len(t_vector *v);
+void		vec_norm(t_vector *v);
+double		vec_dot_prod(t_vector *v1, t_vector *v2);
 
 #endif
