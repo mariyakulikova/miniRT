@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:07:50 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/10/21 12:02:05 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/10/21 15:09:40 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-# include <math.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <errno.h>
+#ifndef SCENE_H
+# define SCENE_H
 
-# include "../libft/libft.h"
-# include "vector.h"
-# include "window.h"
-# include "figure.h"
-# include "camera.h"
-# include "scene.h"
-# include "ray_tracing.h"
+typedef struct s_scene
+{
+	t_camera	*cams;
+	t_sphere	*sphere;
+	float		width;
+	float		hight;
+}	t_scene;
 
+t_scene	*new_scene(t_camera *cs, t_sphere *s);
 
 #endif

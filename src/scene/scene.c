@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:07:50 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/10/21 12:05:15 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/10/21 12:26:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-# include <math.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <errno.h>
+#include "minirt.h"
 
-# include "../libft/libft.h"
-# include "vector.h"
-# include "window.h"
-# include "figure.h"
-# include "camera.h"
-# include "scene.h"
-# include "ray_tracing.h"
+t_scene	*new_scene(t_camera *cs, t_sphere *s)
+{
+	t_scene	*sc;
 
-
-#endif
+	sc = (t_scene *)malloc(sizeof(t_scene));
+	if (!sc)
+		return (NULL);
+	sc->cams;
+	sc->sphere = s;
+	sc->hight = HIGHT;
+	sc->width = WIDTH;
+	return (sc);
+}

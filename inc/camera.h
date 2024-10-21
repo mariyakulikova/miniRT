@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:07:50 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/10/21 11:50:35 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/10/21 12:00:42 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-# include <math.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <errno.h>
+#ifndef CAMERA_H
+# define CAMERA_H
 
-# include "../libft/libft.h"
-# include "vector.h"
-# include "window.h"
-# include "figure.h"
-# include "camera.h"
-# include "scene.h"
-# include "ray_tracing.h"
+typedef struct s_camera
+{
+	t_vector	*origin;
+	t_vector	*direction;
+	float		fov;
+}	t_camera;
 
+t_camera	*new_camera(t_vector *ori, t_vector *dir, float fov);
 
 #endif

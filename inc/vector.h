@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:50:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/18 12:36:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:09:40 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 struct s_point
 {
-	double	x;
-	double	y;
-	double	z;
+	float	x;
+	float	y;
+	float	z;
 };
 
 typedef struct s_point	t_vector;
 typedef struct s_point	t_point;
 
-t_vector	*new_vec(double x, double y, double z);
+t_vector	*new_vec(float x, float y, float z);
 t_vector	*vec_sub(t_vector *v1, t_vector *v2);
-double		vec_len(t_vector *v);
+float		vec_len(t_vector *v);
 void		vec_norm(t_vector *v);
-double		vec_dot_prod(t_vector *v1, t_vector *v2);
+float		vec_dot_prod(t_vector *v1, t_vector *v2);
 
 #endif

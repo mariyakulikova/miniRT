@@ -7,7 +7,11 @@ LGFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd -lz
 CFILE = main \
 		vector/1_vec \
 		window/hook \
-		window/win
+		window/win \
+		figure/sphere \
+		scene/camera \
+		scene/scene \
+		ray_tracing/
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))
 OBJS = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))

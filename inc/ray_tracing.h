@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   ray_tracing.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:07:50 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/10/21 14:41:17 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/10/21 15:21:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
-# include <math.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <errno.h>
+#ifndef RAY_TRACING_H
+# define RAY_TRACING_H
 
-# include "../libft/libft.h"
-# include "vector.h"
-# include "window.h"
-# include "figure.h"
-# include "camera.h"
-# include "scene.h"
-# include "ray_tracing.h"
+typedef struct s_view_plane
+{
+	float	width;
+	float	hight;
+	float	x_pixel;
+	float	y_pixel;
+}	t_view_plane
 
+void	ray_tracing(void *mlx, void *window, t_scene *scene);
 
 #endif
