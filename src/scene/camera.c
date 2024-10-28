@@ -6,11 +6,11 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:53:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 12:01:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:18:36 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../../inc/minirt.h"
 
 t_camera	*new_camera(t_vector *ori, t_vector *dir, float fov)
 {

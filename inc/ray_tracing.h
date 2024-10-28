@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:41:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:21:14 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:14:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_view_plane
 	float	hight;
 	float	x_pixel;
 	float	y_pixel;
-}	t_view_plane
+}	t_view_plane;
 
 void	ray_tracing(void *mlx, void *window, t_scene *scene);
 

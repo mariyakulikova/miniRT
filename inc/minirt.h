@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:07:50 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:14:36 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "../libft/libft.h"
 # include "vector.h"
 # include "window.h"
-# include "figure.h"
 # include "camera.h"
+# include "figure.h"
 # include "scene.h"
 # include "ray_tracing.h"
 
