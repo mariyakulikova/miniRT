@@ -1,6 +1,6 @@
 NAME  = minirt
 CC = cc
-CFLAGS  = -Wall -Wextra -Werror -g
+CFLAGS  = -Wall -Wextra -Werror -I$(INC) -g
 LDFLAGS = -Llibft -lft
 LGFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd -lz
 
@@ -11,13 +11,17 @@ CFILE = main \
 		figure/sphere \
 		scene/camera \
 		scene/scene \
-		ray_tracing/
+		ray_tracing/ray_tracing \
+		ray_tracing/view_port \
+		tools/utils
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))
-OBJS = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
-HEADER = inc/minirt.h
+OBJS_DIR = obj/
+OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
 LIBFT = libft/libft.a
 MINILIBX = minilibx-linux/libmlx_Linux.a
+INC = inc/
+HEADER = minirt.h
 
 all: $(NAME)
 
@@ -25,16 +29,17 @@ $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LGFLAGS) -o $(NAME)
 
 $(LIBFT):
-	@make -C libft
+	@make -C ./libft
 
 $(MINILIBX):
 	@make -C minilibx-linux
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -I. -c $< -o $@
+$(OBJS_DIR)%.o: %.c $(INC)$(HEADER)
+	mkdir -p $(OBJS_DIR)$(dir $<)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(SRCS_OBJS)
+	rm -rf $(OBJS)
 	@make -C libft clean
 	@make -C minilibx-linux clean
 

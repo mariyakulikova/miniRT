@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   vport.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 12:05:15 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 15:32:52 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/11/19 16:35:02 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/11/19 16:36:21 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef VPORT_H
+# define VPORT_H
 
-t_scene	*new_scene(t_camera *camera, t_sphere *sphere)
+typedef struct	s_vport
 {
-	t_scene	*scene;
+	float	width;
+	float	hight;
+	float	x_pixel;
+	float	y_pixel;
+}				t_vport;
 
-	scene = malloc(sizeof(t_scene));
-	if (!scene)
-		print_error(-1);
-	scene->camera = camera;
-	scene->sphere = sphere;
-	scene->width = 0;
-	scene->hight = 0;
-	return(scene);
-}
+
+t_vport	*get_view_plane(float width, float hight, float fov);
+
+#endif

@@ -6,61 +6,47 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:54:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:09:40 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:31:36 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 t_vector	*new_vec(float x, float y, float z)
 {
-	t_vector	*v;
+	t_vector	*vector;
 
-	v = (t_vector *)malloc(sizeof(t_vector));
-	if (!v)
-		return (NULL);
-	v->x = x;
-	v->y = y;
-	v->z = z;
-	return (v);
+	vector = malloc(sizeof(t_vector));
+	if (!vector)
+		print_error(-1);
+	vector->x = x;
+	vector->y = y;
+	vector->z = z;
+	return (vector);
 }
 
 t_vector	*vec_sub(t_vector *v1, t_vector *v2)
 {
-	float		x;
-	float		y;
-	float		z;
-	t_vector	*v;
-
-	x = v1->x - v2->x;
-	y = v1->y - v2->y;
-	z = v1->z - v2->z;
-	v = new_vec(x, y, z);
-	return (v);
+	return (new_vec(v1->x - v2->x, v1->y - v2->y, v1->z - v2->z));
 }
 
 float	vec_len(t_vector *v)
 {
-	float	len;
-
-	len = sqrt((v->x * v->x) + (v->y * v->y) + (v->z * v->z));
-	return (len);
+	return (sqrt((v->x * v->x) + (v->y * v->y) + (v->z * v->z)));
 }
 
-void		vec_norm(t_vector *v)
+void	vec_norm(t_vector *v)
 {
-	float	len;
+	float	length;
 
-	len = vec_len(v);
-	v->x /= len;
-	v->y /= len;
-	v->z /= len;
+	length = vec_len(v);
+	v->x /= length;
+	v->y /= length;
+	v->z /= length;
 }
 
 float	vec_dot_prod(t_vector *v1, t_vector *v2)
 {
-	float	dot_prod;
-
-	dot_prod = (v1->x * v2->x) + (v1->y * v2->y) + (v1->z * v2->z);
-	return (dot_prod);
+	return ((v1->x * v2->x) + (v1->y * v2->y) + (v1->z * v2->z));
 }
+

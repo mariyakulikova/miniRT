@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 12:05:15 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 15:32:52 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/11/19 15:42:38 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/11/19 15:43:16 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_scene	*new_scene(t_camera *camera, t_sphere *sphere)
+void	print_error(int i)
 {
-	t_scene	*scene;
-
-	scene = malloc(sizeof(t_scene));
-	if (!scene)
-		print_error(-1);
-	scene->camera = camera;
-	scene->sphere = sphere;
-	scene->width = 0;
-	scene->hight = 0;
-	return(scene);
+	if (i == -1)
+		write(STDERR_FILENO, "Error\n", 7);
+	exit(i);
 }

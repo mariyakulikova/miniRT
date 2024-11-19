@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:07:50 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:40:27 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 # include <errno.h>
 
 # include "../libft/libft.h"
+# include "tools.h"
 # include "vector.h"
 # include "window.h"
-# include "figure.h"
 # include "camera.h"
+# include "figure.h"
 # include "scene.h"
 # include "ray_tracing.h"
-
+# include "vport.h"
 
 #endif

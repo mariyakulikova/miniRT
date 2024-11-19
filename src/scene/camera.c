@@ -6,21 +6,21 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:53:49 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 12:01:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:29:25 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_camera	*new_camera(t_vector *ori, t_vector *dir, float fov)
+t_camera	*new_camera(t_vector *origin, t_vector *direction, float fov)
 {
-	t_camera	*cam;
+	t_camera	*camera;
 
-	cam = (t_camera *)malloc(sizeof(t_camera));
-	if (!cam)
-		return (NULL);
-	cam->origin = ori;
-	cam->direction = dir;
-	cam->fov = fov;
-	return (cam);
+	camera = malloc(sizeof(t_camera));
+	if (!camera)
+		print_error(-1);
+	camera->origin = origin;
+	camera->direction = direction;
+	camera->fov = fov;
+	return (camera);
 }
