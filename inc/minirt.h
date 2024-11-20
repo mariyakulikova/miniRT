@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 16:40:27 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:38:49 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,23 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <errno.h>
+# include <stdbool.h>
 
 # include "../libft/libft.h"
-# include "tools.h"
 # include "vector.h"
 # include "window.h"
 # include "camera.h"
 # include "figure.h"
 # include "scene.h"
+# include "tools.h"
 # include "ray_tracing.h"
 # include "vport.h"
+# include "parsing.h"
+
+typedef struct s_minirt
+{
+	t_window	*win;
+	t_scene		*scene;
+}	t_minirt;
 
 #endif

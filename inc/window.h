@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:39:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/10/21 15:09:40 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:17:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_window {
 }			t_window;
 
 int		key_hook(int keysym, t_window *win);
-void	start_mlx(t_window *win);
+int		start_mlx(t_window **win);
 int		close_window(t_window *win);
 
 #endif

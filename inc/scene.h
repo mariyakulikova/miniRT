@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:05 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 15:33:15 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:41:38 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_scene
 	float		hight;
 }	t_scene;
 
-t_scene	*new_scene(t_camera *camera, t_sphere *sphere);
+// t_scene	*new_scene(t_camera *camera, t_sphere *sphere);
+void	init_scene(t_scene **scene);
 
 #endif
