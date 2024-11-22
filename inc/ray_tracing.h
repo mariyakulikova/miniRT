@@ -6,20 +6,12 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:41:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 15:32:29 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:55:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_TRACING_H
 # define RAY_TRACING_H
-
-typedef struct s_view_plane
-{
-	float	width;
-	float	hight;
-	float	x_pixel;
-	float	y_pixel;
-}	t_view_plane;
 
 void	ray_tracing(void *mlx, void *window, t_scene *scene);
 

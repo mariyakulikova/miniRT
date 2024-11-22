@@ -6,22 +6,15 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:02:05 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/20 17:41:38 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:32:28 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
-typedef struct s_scene
-{
-	t_camera	*camera;
-	t_sphere	*sphere;
-	float		width;
-	float		hight;
-}	t_scene;
-
 // t_scene	*new_scene(t_camera *camera, t_sphere *sphere);
-void	init_scene(t_scene **scene);
+t_scene	*init_scene(int w, int h);
+t_vport	*get_view_port(float width, float hight, float fov);
 
 #endif

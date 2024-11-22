@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 14:48:59 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:43:44 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ static void	check_empty_file(char *file)
 	free(line);
 }
 
-
-
-void	parse_file(char *file, t_minirt *minirt)
+void	read_file(char *file, t_data *data)
 {
 	int		fd;
 	char	*line;
 
 	check_empty_file(file);
 	fd = open_file(file);
-	init_scene(&minirt->scene);
+	data->scene = init_scene(WIDTH, HIGHT);
+	if (!data->scene)
+		print_error(-1, strerror(errno), data);
 	while (true)
 	{
 		line = get_next_line(fd);
@@ -41,7 +41,7 @@ void	parse_file(char *file, t_minirt *minirt)
 			break ;
 		if (ft_strlen(line) == 0)
 			continue ;
-		parse_line(line, minirt->scene);
+		parse_line(line, data);
 		free(line);
 	}
 	close(fd);

@@ -6,22 +6,12 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:50:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 16:29:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:54:11 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
-
-struct s_point
-{
-	float	x;
-	float	y;
-	float	z;
-};
-
-typedef struct s_point	t_vector;
-typedef struct s_point	t_point;
 
 t_vector	*new_vec(float x, float y, float z);
 t_vector	*vec_sub(t_vector *v1, t_vector *v2);

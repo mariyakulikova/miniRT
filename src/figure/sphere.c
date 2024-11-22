@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 16:40:58 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:39:49 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_sphere	*new_sphere(t_vector *center, float radius)
 
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
-		print_error(-1);
+		return (NULL);
 	sphere->center = center;
 	sphere->radius = radius;
 	return (sphere);

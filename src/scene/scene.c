@@ -6,20 +6,23 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:05:15 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 14:43:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:31:12 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	init_scene(t_scene **scene)
+t_scene	*init_scene(int w, int h)
 {
-	*scene = (t_scene *)malloc(sizeof(t_scene));
-	if (!*scene)
-		print_error(-1, "Malloc error\n", NULL);
-	ft_memset(*scene, 0, sizeof(t_scene));
-	(*scene)->width = WIDTH;
-	(*scene)->hight = HIGHT;
+	t_scene	*scene;
+
+	scene = (t_scene *)malloc(sizeof(t_scene));
+	if (!scene)
+		return (NULL);
+	ft_memset(scene, 0, sizeof(t_scene));
+	scene->width = w;
+	scene->hight = h;
+	return (scene);
 }
 
 // t_scene	*new_scene(t_camera *camera, t_sphere *sphere)

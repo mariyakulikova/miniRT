@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:54:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/19 16:31:36 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:29:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vector	*new_vec(float x, float y, float z)
 
 	vector = malloc(sizeof(t_vector));
 	if (!vector)
-		print_error(-1);
+		return (NULL);
 	vector->x = x;
 	vector->y = y;
 	vector->z = z;

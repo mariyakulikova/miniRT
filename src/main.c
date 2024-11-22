@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:31:46 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 14:49:29 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:44:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,23 @@ static void	check_agrs(int argc, char **argv)
 		print_error(-1, "Need 1 argument\n", NULL);
 	len = ft_strlen(*(argv + 1));
 	if (len < 4)
-		print_error(-1, "File name is not valid\n", NULL, NULL);
+		print_error(-1, "File name is not valid\n", NULL);
 	tmp = ft_substr(*(argv + 1), len - 3, 3);
 	res = ft_strcmp(".rt", tmp) == 0;
 	free(tmp);
 	if (!res)
-		print_error(-1, "File name must have \'.rt\' extention\n", NULL, NULL);
+		print_error(-1, "File name must have \'.rt\' extention\n", NULL);
 }
 
 int	main(int argc, char **argv)
 {
-	t_minirt	*minirt;
+	t_data	*data;
 
 	check_agrs(argc, argv);
-	minirt = (t_minirt *)malloc(sizeof(t_minirt));
-	if (!minirt)
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
 		print_error(-1, strerror(errno), NULL);
-	ft_memset(minirt, 0, sizeof(t_minirt));
+	ft_memset(data, 0, sizeof(t_data));
 	// t_vector	*sphere_center = new_vec(0, 0, -32);
 	// t_sphere	*sphere = new_sphere(sphere_center, 8/2);
 	// t_vector	*cam_origin = new_vec(0, 0, 0);
@@ -48,9 +48,9 @@ int	main(int argc, char **argv)
 	// scene->width = WIDTH;
 	// scene->hight = HIGHT;
 
-	parse_file(*(argv + 1), minirt);
-	start_mlx(minirt);
-	ray_tracing(minirt->win->mlx_ptr, minirt->win->win_ptr, minirt->scene);
-	mlx_loop(minirt->win->mlx_ptr);
+	read_file(*(argv + 1), data);
+	start_mlx(data);
+	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data->scene);
+	mlx_loop(data->win->mlx_ptr);
 	return (0);
 }

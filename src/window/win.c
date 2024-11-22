@@ -6,40 +6,40 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:26:30 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 14:41:25 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:37:12 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	start_mlx(t_minirt *minirt)
+void	start_mlx(t_data *data)
 {
-	minirt->win = (t_window *)malloc(sizeof(t_window));
-	if (!minirt->win)
-		print_error(-1, strerror(errno), minirt);
-	ft_memset(minirt->win, 0, sizeof(t_window));
-	minirt->win->mlx_ptr = mlx_init();
-	minirt->win->win_ptr = mlx_new_window(minirt->win->mlx_ptr, \
+	data->win = (t_window *)malloc(sizeof(t_window));
+	if (!data->win)
+		print_error(-1, strerror(errno), data);
+	ft_memset(data->win, 0, sizeof(t_window));
+	data->win->mlx_ptr = mlx_init();
+	data->win->win_ptr = mlx_new_window(data->win->mlx_ptr, \
 									WIDTH, HIGHT, TITLE);
-	minirt->win->img.ptr = mlx_new_image(minirt->win->mlx_ptr, WIDTH, HIGHT);
-	minirt->win->img.addr = mlx_get_data_addr(minirt->win->img.ptr, \
-									&minirt->win->img.bpp, \
-									&minirt->win->img.line_len, \
-									&minirt->win->img.endian);
-	mlx_key_hook(minirt->win->win_ptr, key_hook, minirt);
-	mlx_hook(minirt->win->win_ptr, DestroyNotify, 0, close_window, minirt);
+	data->win->img.ptr = mlx_new_image(data->win->mlx_ptr, WIDTH, HIGHT);
+	data->win->img.addr = mlx_get_data_addr(data->win->img.ptr, \
+									&data->win->img.bpp, \
+									&data->win->img.line_len, \
+									&data->win->img.endian);
+	mlx_key_hook(data->win->win_ptr, key_hook, data);
+	mlx_hook(data->win->win_ptr, DestroyNotify, 0, close_window, data);
 }
 
-int	close_window(t_minirt *minirt)
+int	close_window(t_data *data)
 {
-	mlx_loop_end(minirt->win->mlx_ptr);
-	mlx_destroy_image(minirt->win->mlx_ptr, minirt->win->img.ptr);
-	mlx_destroy_window(minirt->win->mlx_ptr, minirt->win->win_ptr);
-	mlx_destroy_display(minirt->win->mlx_ptr);
-	// TODO free t_minirt and others it has
-	free(minirt->win);
-	free(minirt->scene);
-	free(minirt);
+	mlx_loop_end(data->win->mlx_ptr);
+	mlx_destroy_image(data->win->mlx_ptr, data->win->img.ptr);
+	mlx_destroy_window(data->win->mlx_ptr, data->win->win_ptr);
+	mlx_destroy_display(data->win->mlx_ptr);
+	// TODO free t_data and others it has
+	free(data->win);
+	free(data->scene);
+	free(data);
 	exit (0);
 }
 

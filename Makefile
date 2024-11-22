@@ -14,7 +14,8 @@ CFILE = main \
 		ray_tracing/ray_tracing \
 		ray_tracing/view_port \
 		tools/utils \
-		parsing/parse_file
+		parsing/read_file \
+		parsing/parse_line
 
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))
 OBJS_DIR = obj/
