@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:05:15 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/20 17:41:20 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:43:48 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_scene(t_scene **scene)
 {
 	*scene = (t_scene *)malloc(sizeof(t_scene));
 	if (!*scene)
-		print_error(-1, "Malloc error\n", NULL, NULL);
+		print_error(-1, "Malloc error\n", NULL);
 	ft_memset(*scene, 0, sizeof(t_scene));
 	(*scene)->width = WIDTH;
 	(*scene)->hight = HIGHT;
