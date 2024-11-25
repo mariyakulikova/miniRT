@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:27:09 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:54:32 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@ typedef struct s_sphere
 	float		radius;
 }	t_sphere;
 
+typedef struct s_color
+{
+	uint8_t	r;
+	uint8_t	g;
+	uint8_t	b;
+}	t_color;
+
+typedef enum e_ftype
+{
+	UNDEFINED,
+	SPHERE,
+	PLANE,
+	CYLINDER
+}	t_ftype;
+
+typedef struct s_figure
+{
+	t_ftype		type;
+	t_vector	*norm_v3d;
+	t_vector	*coord;
+	t_color		*color;
+	float		hight;
+	float		diameter;
+}	t_figure;
+
+
 typedef struct s_vport
 {
 	float		width;
@@ -51,6 +77,7 @@ typedef struct s_scene
 	t_sphere	*sphere;
 	float		width;
 	float		hight;
+	t_list		*fugures;
 }	t_scene;
 
 typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:28:02 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:35:49 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/stat.h>
 # include <errno.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 # include "../libft/libft.h"
 # include "types.h"

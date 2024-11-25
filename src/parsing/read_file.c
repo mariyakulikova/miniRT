@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file.c                                       :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 17:43:44 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/25 22:00:24 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ static void	check_empty_file(char *file)
 	free(line);
 }
 
+static void	parse_line(char *line, t_data *data)
+{
+	char	*str;
+
+	str = ft_strtrim(line, " ");
+	if (!str)
+		print_error(-1, NULL, data);
+	if (is_upper(str[0]))
+		parse_scene_options(data, str);
+	else if (is_lower(str[0]))
+		parse_figures(data, str);
+	free(str);
+}
+
 void	read_file(char *file, t_data *data)
 {
 	int		fd;
@@ -39,7 +53,7 @@ void	read_file(char *file, t_data *data)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (ft_strlen(line) == 0)
+		if (ft_strcmp(line, "\n") == 0)
 			continue ;
 		parse_line(line, data);
 		free(line);
