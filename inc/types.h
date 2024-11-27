@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/25 18:54:32 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:26:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,25 @@ typedef struct s_camera
 	float		fov;
 }	t_camera;
 
+typedef struct s_a_light
+{
+	float	ratio;
+	t_color	*color;
+}	t_a_light;
+
+typedef struct s_light
+{
+	float		ratio;
+	t_vector	*coord;
+	t_color		*color;
+}	t_light;
+
 typedef struct s_scene
 {
 	t_camera	*camera;
 	t_sphere	*sphere;
+	t_a_light	*a_light;
+	t_light	*light;
 	float		width;
 	float		hight;
 	t_list		*fugures;
