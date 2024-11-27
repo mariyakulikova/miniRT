@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:50:01 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 20:27:24 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:58:24 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_ftype	get_ftype(char *id)
 		return (SPHERE);
 	if (ft_strcmp(id, "pl") == 0)
 		return (PLANE);
-	if (ft_strcmp(id, "pl") == 0)
+	if (ft_strcmp(id, "cy") == 0)
 		return (CYLINDER);
 	return (UNDEFINED);
 }

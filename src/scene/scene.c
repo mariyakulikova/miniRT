@@ -6,13 +6,13 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:05:15 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:31:12 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:53:15 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_scene	*init_scene(int w, int h)
+t_scene	*new_scene(int w, int h)
 {
 	t_scene	*scene;
 
