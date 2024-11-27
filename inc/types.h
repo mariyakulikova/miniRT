@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 15:26:04 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:02:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_sphere
 
 typedef struct s_color
 {
-	uint8_t	r;
-	uint8_t	g;
-	uint8_t	b;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
 }	t_color;
 
 typedef enum e_ftype
