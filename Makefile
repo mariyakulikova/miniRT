@@ -4,20 +4,25 @@ CFLAGS  = -Wall -Wextra -Werror -I$(INC) -g
 LDFLAGS = -Llibft -lft
 LGFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd -lz
 
-CFILE = main \
-		vector/1_vec \
-		window/hook \
-		window/win \
+CFILE = color/1_color \
+		figure/cylinder \
+		figure/figure \
+		figure/plane \
 		figure/sphere \
-		scene/camera \
-		scene/scene \
+		parsing/parsing \
 		ray_tracing/ray_tracing \
 		ray_tracing/view_port \
-		tools/utils \
-		parsing/read_file \
-		parsing/parse_scene \
-		parsing/parse_figure
-
+		scene/a_light \
+		scene/camera \
+		scene/light \
+		scene/scene \
+		tools/1_utils \
+		tools/2_utils \
+		vector/1_vec \
+		vector/2_vec \
+		window/hook \
+		window/win \
+		main
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))
 OBJS_DIR = obj/
 OBJS = $(SRCS:%.c=$(OBJS_DIR)%.o)
