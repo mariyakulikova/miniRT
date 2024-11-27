@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:39:49 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/27 20:32:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ t_sphere	*new_sphere(t_vector *center, float radius)
 	sphere->center = center;
 	sphere->radius = radius;
 	return (sphere);
+}
+
+t_figure	*get_sphere(t_ftype type, char **s)
+{
+	t_color		*color;
+	t_vector	*coord;
+	float		d;
+
+	color = get_color(s[3]);
+	if (!color)
+		return (NULL);
+	coord = get_vec(s[1], false);
+	if (!coord)
+	{
+		free(color);
+		return (NULL);
+	}
+	d = ft_atof(s[2]);
+	return (new_figure((t_figure){type, NULL, coord, color, d, d}));
 }
 
 int	sphere_intersect(t_camera *camera, t_vector *ray, t_sphere *sphere)
