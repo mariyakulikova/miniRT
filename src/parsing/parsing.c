@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 20:16:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:45:36 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,26 @@ static void	check_empty_file(char *file)
 // TODO redo!!!!!!!!!!
 static void	parse_scene_features(t_data *data, char **s)
 {
-	if (s[0][0] == 'A' && data->scene->a_light == NULL)
+	if (s[0][0] == 'A')
 	{
+		if (data->scene->a_light == NULL)
+			print_error(-1, NULL, data);
 		data->scene->a_light = get_a_light(s);
 		if (!data->scene->a_light)
 			print_error(-1, NULL, data);
 	}
-	else if (s[0][0] == 'C' && data->scene->camera == NULL)
+	else if (s[0][0] == 'C')
 	{
+		if (data->scene->camera == NULL)
+			print_error(-1, NULL, data);
 		data->scene->camera = get_camera(s);
 		if (!data->scene->camera)
 			print_error(-1, NULL, data);
 	}
 	else if (s[0][0] == 'L' && data->scene->light == NULL)
 	{
+		if (data->scene->light == NULL)
+			print_error(-1, NULL, data);
 		data->scene->light = get_light(s);
 		if (!data->scene->light)
 			print_error(-1, NULL, data);
