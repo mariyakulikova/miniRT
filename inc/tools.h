@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:44:00 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 16:52:54 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:51:33 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ bool	in_range_int(int i, int left, int right);
 bool	in_range_float(float i, float left, float right);
 bool	is_upper(char i);
 bool	is_lower(char i);
+float	ft_atof(char *str);
 
 #endif

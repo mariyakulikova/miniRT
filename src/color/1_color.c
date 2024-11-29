@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:38:04 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 16:55:24 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:50:38 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_color	*new_color(unsigned char r, unsigned char g, unsigned char b)
 	c->r = r;
 	c->g = g;
 	c->b = b;
-	retunr (c);
+	return (c);
 }
 
 t_color	*get_color(char *str)

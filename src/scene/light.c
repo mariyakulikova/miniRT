@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:54:44 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 18:59:00 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:09:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ t_light	*get_light(char **s)
 {
 	float		ratio;
 	t_vector	*vector;
-	t_color		*color
+	t_color		*color;
 
-	ratio = ft_atof(s[2]); // implment float ft_atof(char *str)
-	if (!in_range_float(ratio, 0.0f, 1.0f));
+	ratio = ft_atof(s[2]);
+	if (!in_range_float(ratio, 0.0f, 1.0f))
 		return (NULL);
 	vector = get_vec(s[1], false);
 	if (!vector)
