@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:45:36 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:24:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	parse_line(char *line, t_data *data)
 	else if (is_lower(s[0][0]))
 		parse_figures(data, s);
 	free(str);
-	free_split(s);
+	ft_free_split(s);
 }
 
 void	read_file(char *file, t_data *data)

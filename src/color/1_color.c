@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:38:04 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:50:38 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:24:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_color	*get_color(char *str)
 	r = (unsigned char)ft_atoi(s[0]);
 	g = (unsigned char)ft_atoi(s[1]);
 	b = (unsigned char)ft_atoi(s[2]);
-	free_split(s);
+	ft_free_split(s);
 	if (in_range_int(r, 0, 255) \
 		&& in_range_int(g, 0, 255) \
 		&& in_range_int(b, 0, 255))

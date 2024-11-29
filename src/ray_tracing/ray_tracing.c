@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:40:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:25:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ray_tracing(void *mlx, void *window, t_scene *scene)
 	t_vector	*ray;
 	t_vport	*vplane;
 
-	vplane = get_view_port(scene->width, scene->hight, scene->camera->fov);
+	vplane = get_view_port(scene->width, scene->hight);
 	mlx_y = 0;
 	y_angle = (scene->hight/2);
 	while (y_angle >= (scene->hight / 2) * (-1))

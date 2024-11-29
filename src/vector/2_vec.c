@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:33:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 18:54:18 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:24:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_vector	*get_vec(char *str, bool need_check)
 	x = ft_atof(s[0]);
 	y = ft_atof(s[1]);
 	z = ft_atof(s[2]);
-	free_split(s);
+	ft_free_split(s);
 	if (need_check)
 	{
 		if (in_range_float(x, 0.0f, 1.0f) \

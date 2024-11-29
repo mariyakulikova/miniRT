@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:39:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:49:36 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:19:11 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define WINDOW_H
 # include <X11/keysym.h>
 # include <X11/X.h>
-# include "../../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
 
 # define HIGHT 900
 # define WIDTH 1200

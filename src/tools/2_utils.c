@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:16:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:40:57 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:23:21 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,17 @@ float	ft_atof(char *str)
 	while (len--)
 		fractional_part /= 10;
 	return (integer_part + fractional_part);
+}
+
+void	ft_free_split(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+	{
+		free(*(s + i));
+		i++;
+	}
+	free(s);
 }
