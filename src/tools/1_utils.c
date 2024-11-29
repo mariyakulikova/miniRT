@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:42:38 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 16:46:20 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:12:15 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,21 @@ int	open_file(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		print_error(-1, strerror(errno), NULL);
+		print_error(-1, "open", NULL);
 	return (fd);
 }
 
 bool	in_range_int(int i, int left, int right)
 {
-	return ((i >= left) && (i <= right));
+	return ((left <= i) && (i <= right));
 }
 
 bool	in_range_float(float i, float left, float right)
 {
-	return ((fabs(i - left) < 0.0001) && (fabs(i - right) < 0.0001));
+	return ((left <= i) && (i <= right));
 }
 
 bool	is_upper(char i)
 {
-	return ((i >= 'A') && (i <= 'Z'));
+	return (('A'<= i) && (i <= 'Z'));
 }

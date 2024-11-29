@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:24:09 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:51:12 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,27 @@ static void	parse_scene_features(t_data *data, char **s)
 {
 	if (s[0][0] == 'A')
 	{
-		if (data->scene->a_light == NULL)
-			print_error(-1, NULL, data);
+		if (data->scene->a_light)
+			print_error(-1, "already exist", data);
 		data->scene->a_light = get_a_light(s);
 		if (!data->scene->a_light)
-			print_error(-1, NULL, data);
+			print_error(-1, "get_a_light", data);
 	}
 	else if (s[0][0] == 'C')
 	{
-		if (data->scene->camera == NULL)
-			print_error(-1, NULL, data);
+		if (data->scene->camera)
+			print_error(-1, "already exist", data);
 		data->scene->camera = get_camera(s);
 		if (!data->scene->camera)
-			print_error(-1, NULL, data);
+			print_error(-1, "get_camera", data);
 	}
-	else if (s[0][0] == 'L' && data->scene->light == NULL)
+	else if (s[0][0] == 'L')
 	{
-		if (data->scene->light == NULL)
-			print_error(-1, NULL, data);
+		if (data->scene->light)
+			print_error(-1, "already exist", data);
 		data->scene->light = get_light(s);
 		if (!data->scene->light)
-			print_error(-1, NULL, data);
+			print_error(-1, "get_light", data);
 	}
 }
 
@@ -60,7 +60,7 @@ static void	parse_figures(t_data *data, char **s)
 
 	type = get_ftype(s[0]);
 	if (type == UNDEFINED)
-		print_error(-1, NULL, data);
+		print_error(-1, "undefined figure type", data);
 	if (type == SPHERE)
 		figure = get_sphere(type, s);
 	else if (type == PLANE)
@@ -68,10 +68,10 @@ static void	parse_figures(t_data *data, char **s)
 	else if (type == CYLINDER)
 		figure = get_cylinder(type, s);
 	if (!figure)
-		print_error(-1, NULL, data);
+		print_error(-1, "malloc", data);
 	node = ft_lstnew(figure);
 	if (!node)
-		print_error(-1, NULL, data);
+		print_error(-1, "malloc", data);
 	ft_lstadd_back(&data->scene->fugures, node);
 }
 
@@ -82,12 +82,12 @@ static void	parse_line(char *line, t_data *data)
 
 	str = ft_strtrim(line, " ");
 	if (!str)
-		print_error(-1, NULL, data);
+		print_error(-1, "malloc trim", data);
 	s = ft_split(str, ' ');
 	if (!s)
 	{
 		free(str);
-		print_error(-1, NULL, data);
+		print_error(-1, "malloc split", data);
 	}
 	if (is_upper(s[0][0]))
 		parse_scene_features(data, s);
@@ -100,19 +100,21 @@ static void	parse_line(char *line, t_data *data)
 void	read_file(char *file, t_data *data)
 {
 	int		fd;
+	int		len;
 	char	*line;
 
 	check_empty_file(file);
 	fd = open_file(file);
 	data->scene = new_scene(WIDTH, HIGHT);
 	if (!data->scene)
-		print_error(-1, strerror(errno), data);
+		print_error(-1, "malloc", data);
 	while (true)
 	{
 		line = get_next_line(fd);
-		if (!line)
+		len = ft_strlen(line);
+		if (len == 0)
 			break ;
-		if (line[0] == '\n')
+		if (len && (line[0] == '\n'))
 			continue ;
 		parse_line(line, data);
 		free(line);

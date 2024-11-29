@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:26:30 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:37:12 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:42:37 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	start_mlx(t_data *data)
 {
 	data->win = (t_window *)malloc(sizeof(t_window));
 	if (!data->win)
-		print_error(-1, strerror(errno), data);
+		print_error(-1, "malloc", data);
 	ft_memset(data->win, 0, sizeof(t_window));
 	data->win->mlx_ptr = mlx_init();
 	data->win->win_ptr = mlx_new_window(data->win->mlx_ptr, \

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:54:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:15:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_figure	*get_sphere(t_ftype type, char **s)
 	return (new_figure((t_figure){type, NULL, coord, color, d, d}));
 }
 
-int	sphere_intersect(t_camera *camera, t_vector *ray, t_sphere *sphere)
+int	sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 {
 	float		b;
 	float		c;
@@ -54,9 +54,9 @@ int	sphere_intersect(t_camera *camera, t_vector *ray, t_sphere *sphere)
 
 	dist_1 = 0;
 	// dist_2 = 0;
-	camera_sphere = vec_sub(camera->origin, sphere->center);
+	camera_sphere = vec_sub(camera->origin, sphere->coord);
 	b = 2 * (vec_dot_prod(camera_sphere, ray));
-	c = vec_dot_prod(camera_sphere, camera_sphere) - (sqrtf(sphere->radius));
+	c = vec_dot_prod(camera_sphere, camera_sphere) - (sqrtf(sphere->diameter / 2));
 	discr = (b * b) - (4 * c);
 	free(camera_sphere);
 	if (discr < 0)
