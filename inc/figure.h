@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:36:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:55:34 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:24:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ t_figure	*get_cylinder(t_ftype type, char **s);
 t_figure	*get_plane(t_ftype type, char **s);
 t_figure	*get_sphere(t_ftype type, char **s);
 t_ftype		get_ftype(char *id);
-int			sphere_intersect(t_camera *camera, t_vector *ray, t_sphere *sphere);
+int			sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere);
 
 #endif

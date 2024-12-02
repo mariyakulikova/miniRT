@@ -58,3 +58,6 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean all re
+
+test:
+	./minirt file_rt/scene_1.rt

@@ -6,11 +6,27 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 17:17:47 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:28:37 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_figure	*find_figure(t_list *list, t_ftype type)
+{
+	t_list		*node;
+	t_figure	*res;
+
+	node = list;
+	while (node)
+	{
+		res = (t_figure *)node->content;
+		if (res->type == type)
+			return (res);
+		node = node->next;
+	}
+	return (NULL);
+}
 
 void	ray_tracing(void *mlx, void *window, t_scene *scene)
 {
@@ -22,11 +38,13 @@ void	ray_tracing(void *mlx, void *window, t_scene *scene)
 	float		y_ray;
 	float		x_ray;
 	t_vector	*ray;
-	t_vport	*vplane;
+	t_vport		*vplane;
+	t_figure	*sphere;
 
+	sphere = find_figure(scene->fugures, SPHERE);
 	vplane = get_view_port(scene->width, scene->hight);
 	mlx_y = 0;
-	y_angle = (scene->hight/2);
+	y_angle = (scene->hight / 2);
 	while (y_angle >= (scene->hight / 2) * (-1))
 	{
 		y_ray = y_angle * vplane->y_pixel;
@@ -37,7 +55,7 @@ void	ray_tracing(void *mlx, void *window, t_scene *scene)
 			x_ray = x_angle * vplane->x_pixel;
 			ray = new_vec(x_ray, y_ray, -1);
 			vec_norm(ray);
-			if (sphere_intersect(scene->camera, ray, scene->sphere))
+			if (sphere_intersect(scene->camera, ray, sphere))
 				color = 16766720;
 			else
 				color = 16777215;
