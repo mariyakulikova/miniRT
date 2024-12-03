@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 16:51:12 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:52:27 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	parse_scene_features(t_data *data, char **s)
 
 static void	parse_figures(t_data *data, char **s)
 {
-	t_figure	*figure;
+	t_figure	*figure = NULL;
 	t_list		*node;
 	t_ftype		type;
 

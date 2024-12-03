@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   view_port.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:33:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:56:43 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:40:05 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vport	*get_view_port(float width, float hight)
 	if (!vp)
 		return (NULL);
 	aspect_ratio = width / hight;
-	vp->width = 1;
+	vp->width = 1; // nicht verstehen
 	vp->hight = vp->width / aspect_ratio;
 	vp->x_pixel = vp->width / width;
 	vp->y_pixel = vp->hight / hight;
