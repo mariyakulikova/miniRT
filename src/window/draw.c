@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.h                                           :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 12:39:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/03 13:24:49 by mkulikov         ###   ########.fr       */
+/*   Created: 2024/12/03 13:24:10 by mkulikov          #+#    #+#             */
+/*   Updated: 2024/12/03 13:24:55 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
-# include <X11/keysym.h>
-# include <X11/X.h>
-# include "../minilibx-linux/mlx.h"
+#include "minirt.h"
 
-# define HIGHT 900
-# define WIDTH 1200
-# define WIN_CEF 0.95
-# define TITLE "data"
+void	ft_pixel_put(t_img *img, int x, int y, int color)
+{
+	int	offset;
 
-int		key_hook(int keysym, t_data *data);
-void	start_mlx(t_data *data);
-int		close_window(t_data *data);
-void	ft_pixel_put(t_img *img, int x, int y, int color);
-
-#endif
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HIGHT)
+		return ;
+	offset = (img->line_len * y) + (x * (img->bpp / 8));
+	*((unsigned int *)(img->addr + offset)) = color;
+}

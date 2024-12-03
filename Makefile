@@ -20,6 +20,7 @@ CFILE = color/1_color \
 		tools/2_utils \
 		vector/1_vec \
 		vector/2_vec \
+		window/draw \
 		window/hook \
 		window/win \
 		main
