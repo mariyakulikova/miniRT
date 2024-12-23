@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:42:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 20:47:51 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/23 14:24:10 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,13 @@ t_figure	*get_plane(t_ftype type, char **s)
 		return (NULL);
 	}
 	return (new_figure((t_figure){type, nv3d, coord, color, 0, 0}));
+}
+int plane_intersect(t_camera *camera, t_vector *ray, t_figure *plane)
+{
+	(void)camera;
+	(void)ray;
+	(void)plane;
+	printf("hello plane");
+	return 0;
+	
 }

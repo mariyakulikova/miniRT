@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:31:46 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/02 13:29:30 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:54:00 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,6 @@ int	main(int argc, char **argv)
 	if (!data)
 		print_error(-1, "malloc", NULL);
 	ft_memset(data, 0, sizeof(t_data));
-	// t_vector	*sphere_center = new_vec(0, 0, -32);
-	// t_sphere	*sphere = new_sphere(sphere_center, 8/2);
-	// t_vector	*cam_origin = new_vec(0, 0, 0);
-	// t_vector	*cam_direction = new_vec(0, 0, -1);
-	// t_camera	*camera = new_camera(cam_origin, cam_direction, 70);
-	// t_scene		*scene = new_scene(camera, sphere);
-	// scene->width = WIDTH;
-	// scene->hight = HIGHT;
-
 	read_file(*(argv + 1), data);
 	start_mlx(data);
 	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data->scene);
