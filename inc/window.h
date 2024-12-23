@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:39:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:19:11 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:35:31 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define HIGHT 900
 # define WIDTH 1200
-# define WIN_CEF 0.95
+# define WIN_CEF 0.95 //ne poniatno
 # define TITLE "data"
 
 int		key_hook(int keysym, t_data *data);
