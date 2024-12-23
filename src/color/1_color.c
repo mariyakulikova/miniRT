@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_color.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:38:04 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:24:04 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:27:27 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,9 @@ t_color	*get_color(char *str)
 		&& in_range_int(b, 0, 255))
 		return (new_color(r, g, b));
 	return (NULL);
+}
+int get_figure_color(t_figure *figure)
+{
+
+	return (figure->color->r << 16) | (figure->color->g << 8) | figure->color->b;
 }

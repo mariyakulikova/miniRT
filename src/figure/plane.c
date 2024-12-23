@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:42:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 14:24:10 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:14:18 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,20 @@ t_figure	*get_plane(t_ftype type, char **s)
 }
 int plane_intersect(t_camera *camera, t_vector *ray, t_figure *plane)
 {
-	(void)camera;
-	(void)ray;
-	(void)plane;
-	printf("hello plane");
+	t_vector	*camera_to_plane;
+	float		normal_dot_ray;
+	float		normal_dot_dist; 
+	float		distance;
+
+	normal_dot_ray = vec_dot_prod(plane->norm_v3d, ray);
+	camera_to_plane = vec_sub(plane->coord, camera->origin);
+	if (normal_dot_ray != 0)
+	{
+		normal_dot_dist = vec_dot_prod(camera_to_plane, plane->norm_v3d);
+		distance = normal_dot_dist / normal_dot_ray;
+		if (distance < 0)
+			return (0);
+		return (distance);
+	}
 	return 0;
-	
 }

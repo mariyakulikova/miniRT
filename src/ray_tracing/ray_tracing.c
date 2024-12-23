@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 15:20:23 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:27:18 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ t_figure	*find_figure(t_list *list, t_ftype type)
 	}
 	return (NULL);
 }
-int get_figure_color(t_figure *figure)
-{
 
-	return (figure->color->r << 16) | (figure->color->g << 8) | figure->color->b;
-}
 
 float intersect(t_camera *camera, t_vector *ray, t_figure *figure)
 {

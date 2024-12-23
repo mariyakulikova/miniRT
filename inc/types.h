@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 12:02:42 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:02:33 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_vport
 	float		hight;
 	float		x_pixel;
 	float		y_pixel;
-	float		d;
 }	t_vport;
 
 typedef struct s_camera
