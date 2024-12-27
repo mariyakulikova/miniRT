@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/24 13:56:11 by cmarguer         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:09:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_figure	*get_cylinder(t_ftype type, char **s)
 	}
 	d = ft_atof(s[3]);
 	h = ft_atof(s[4]);
-	return (new_figure((t_figure){type, nv3d, coord, color, h, d}));
+	return (new_figure((t_figure){type, nv3d, coord, color, NULL, h, d}));
 }
 /* int cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder) {
     t_vector *oc = vec_sub(camera->origin, cylinder->coord);

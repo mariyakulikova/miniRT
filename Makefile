@@ -5,6 +5,7 @@ LDFLAGS = -Llibft -lft
 LGFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd -lz
 
 CFILE = color/1_color \
+		color/2_color \
 		figure/cylinder \
 		figure/figure \
 		figure/plane \

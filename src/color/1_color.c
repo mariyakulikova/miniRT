@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   1_color.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:38:04 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 16:27:27 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/27 16:34:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	*new_color(unsigned char r, unsigned char g, unsigned char b)
+t_color	*new_color(float r, float g, float b)
 {
 	t_color	*c;
 
@@ -27,26 +27,21 @@ t_color	*new_color(unsigned char r, unsigned char g, unsigned char b)
 
 t_color	*get_color(char *str)
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	char			**s;
+	int		r;
+	int		g;
+	int		b;
+	char	**s;
 
 	s = ft_split(str, ',');
 	if (!s)
 		return (NULL);
-	r = (unsigned char)ft_atoi(s[0]);
-	g = (unsigned char)ft_atoi(s[1]);
-	b = (unsigned char)ft_atoi(s[2]);
+	r = ft_atoi(s[0]);
+	g = ft_atoi(s[1]);
+	b = ft_atoi(s[2]);
 	ft_free_split(s);
 	if (in_range_int(r, 0, 255) \
 		&& in_range_int(g, 0, 255) \
 		&& in_range_int(b, 0, 255))
-		return (new_color(r, g, b));
+		return (new_color(r / 255.0f, g / 255.0f, b / 255.0f));
 	return (NULL);
-}
-int get_figure_color(t_figure *figure)
-{
-
-	return (figure->color->r << 16) | (figure->color->g << 8) | figure->color->b;
 }

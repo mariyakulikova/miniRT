@@ -3,31 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 16:27:18 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:14:35 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_figure	*find_figure(t_list *list, t_ftype type)
+// t_figure	*find_figure(t_list *list, t_ftype type)
+// {
+// 	t_list		*node;
+// 	t_figure	*res;
+
+// 	node = list;
+// 	while (node)
+// 	{
+// 		res = (t_figure *)node->content;
+// 		if (res->type == type)
+// 			return (res);
+// 		node = node->next;
+// 	}
+// 	return (NULL);
+// }
+
+void	prep_rt(t_data *d)
 {
-	t_list		*node;
-	t_figure	*res;
-
-	node = list;
-	while (node)
-	{
-		res = (t_figure *)node->content;
-		if (res->type == type)
-			return (res);
-		node = node->next;
-	}
-	return (NULL);
+	set_figure_a_color(d);
 }
-
 
 float intersect(t_camera *camera, t_vector *ray, t_figure *figure)
 {
@@ -71,7 +75,7 @@ void ray_tracing(void *mlx, void *window, t_scene *scene)
 
 	mlx_y = 0;
 	y_angle = (scene->hight / 2);
-	
+
 	while (y_angle >= (scene->hight / 2) * (-1)) {
 		y_ray = y_angle * vplane->y_pixel;
 		x_angle = (scene->width / 2) * (-1);

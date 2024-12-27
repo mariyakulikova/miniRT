@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 15:20:40 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/27 17:10:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_figure	*get_sphere(t_ftype type, char **s)
 		return (NULL);
 	}
 	d = ft_atof(s[2]);
-	return (new_figure((t_figure){type, NULL, coord, color, d, d}));
+	return (new_figure((t_figure){type, NULL, coord, color, NULL, d, d}));
 }
 
 // Функция вычисления пересечения с сферой
@@ -39,7 +39,7 @@ int sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 	t_vector *camera_sphere;
 
 	// Вектор от камеры к центру сферы
-	camera_sphere = vec_sub(camera->origin, sphere->coord);  
+	camera_sphere = vec_sub(camera->origin, sphere->coord);
 
 	// Расстояние между камерой и центром сферы
 	dist_squared = vec_dot_prod(camera_sphere, camera_sphere);

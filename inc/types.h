@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 17:02:33 by alvutina         ###   ########.fr       */
+/*   Updated: 2024/12/27 16:55:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_sphere
 
 typedef struct s_color
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
+	float	r;
+	float	g;
+	float	b;
 }	t_color;
 
 typedef enum e_ftype
@@ -51,6 +51,7 @@ typedef struct s_figure
 	t_vector	*norm_v3d;
 	t_vector	*coord;
 	t_color		*color;
+	t_color		*a_color;
 	float		hight;
 	float		diameter;
 }	t_figure;
@@ -75,6 +76,7 @@ typedef struct s_a_light
 {
 	float	ratio;
 	t_color	*color;
+	t_color	*a_color;
 }	t_a_light;
 
 typedef struct s_light
@@ -89,7 +91,7 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_sphere	*sphere;
 	t_a_light	*a_light;
-	t_light	*light;
+	t_light		*light;
 	float		width;
 	float		hight;
 	t_list		*fugures;
