@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/27 17:10:43 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/28 21:08:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ t_figure	*get_sphere(t_ftype type, char **s)
 		return (NULL);
 	}
 	d = ft_atof(s[2]);
-	return (new_figure((t_figure){type, NULL, coord, color, NULL, d, d}));
+	return (new_figure((t_figure){type, NULL, coord, color, NULL, NULL, d, d}));
 }
 
 // Функция вычисления пересечения с сферой
-int sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
+float sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 {
 	float  b, c, discr, dist_1, dist_squared, radius_squared;
 	t_vector *camera_sphere;
@@ -43,7 +43,7 @@ int sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 
 	// Расстояние между камерой и центром сферы
 	dist_squared = vec_dot_prod(camera_sphere, camera_sphere);
-	radius_squared = powf(sphere->diameter / 2.0, 2.0);
+	radius_squared = powf(sphere->diameter / 2.0f, 2.0f);
 
 	// Проверка, если камера внутри сферы
 	if (dist_squared < radius_squared) {
@@ -51,18 +51,18 @@ int sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 		return 0;  // Нет пересечения, так как камера внутри сферы
 	}
 	// Дискриминант для квадратичного уравнения
-	b = 2 * vec_dot_prod(camera_sphere, ray);  // Удваиваем скалярное произведение
+	b = 2.0f * vec_dot_prod(camera_sphere, ray);  // Удваиваем скалярное произведение
 	c = dist_squared - radius_squared;  // Вычисление c
-	discr = (b * b) - 4 * c;  // Вычисление дискриминанта
+	discr = powf(b, 2.0f) - 4.0f * c;  // Вычисление дискриминанта
 	free(camera_sphere);
 	// Если дискриминант отрицателен, нет пересечений
 	if (discr < 0) {
 		return 0;
 	}
-	dist_1 = (-b - sqrt(discr)) / 2;  // Первый корень
+	dist_1 = (-b - sqrtf(discr)) / 2.0f;  // Первый корень
 	// Если первый корень положительный, есть пересечение
 	if (dist_1 > 0) {
-		return 1;
+		return dist_1;
 	}
 	return 0;  // Нет пересечений
 }

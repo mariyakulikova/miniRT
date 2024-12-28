@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:42:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/27 17:10:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/28 13:47:20 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_figure	*get_plane(t_ftype type, char **s)
 		free(nv3d);
 		return (NULL);
 	}
-	return (new_figure((t_figure){type, nv3d, coord, color, NULL, 0, 0}));
+	return (new_figure((t_figure){type, nv3d, coord, color, NULL, NULL, 0, 0}));
 }
 int plane_intersect(t_camera *camera, t_vector *ray, t_figure *plane)
 {

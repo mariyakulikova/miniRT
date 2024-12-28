@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:50:01 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/27 17:07:59 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:05:33 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,4 @@ t_figure	*new_figure(t_figure args)
 	return (figure);
 }
 
-void	set_figure_a_color(t_data *d)
-{
-	t_list		*node;
-	t_figure	*f;
 
-	node = d->scene->fugures;
-	while (node)
-	{
-		f = (t_figure *)node->content;
-		f->a_color = color_multi(f->color, d->scene->a_light->a_color);
-		if (!f->a_color)
-			print_error(1, "malloc error\n", d);
-		node = node->next;
-	}
-}
-
-int get_figure_color(t_figure *figure)
-{
-	return (color_to_int(figure->a_color));
-}

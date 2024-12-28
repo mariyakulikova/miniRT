@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:42:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/27 16:12:32 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:43:54 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,9 @@ t_color	*color_add(t_color *c1, t_color *c2)
 	float	g;
 	float	b;
 
-	r = c1->r + c2->r;
-	if (r > 1.0f)
-		r = 1.0f;
-	g = c1->g + c2->g;
-	if (g > 1.0f)
-		g = 1.0f;
-	b = c1->b + c2->b;
-	if (b > 1.0f)
-		b = 1.0f;
+	r = fmin(c1->r + c2->r, 1.0f);
+	g = fmin(c1->g + c2->g, 1.0f);
+	b = fmin(c1->b + c2->b, 1.0f);
 	return (new_color(r, g, b));
 }
 

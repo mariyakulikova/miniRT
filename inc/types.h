@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/27 16:55:14 by mkulikov         ###   ########.fr       */
+/*   Updated: 2024/12/28 12:35:06 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_figure
 	t_vector	*coord;
 	t_color		*color;
 	t_color		*a_color;
+	t_color		*l_color;
 	float		hight;
 	float		diameter;
 }	t_figure;
@@ -84,6 +85,7 @@ typedef struct s_light
 	float		ratio;
 	t_vector	*coord;
 	t_color		*color;
+	t_color		*l_color;
 }	t_light;
 
 typedef struct s_scene

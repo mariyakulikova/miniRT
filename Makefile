@@ -7,7 +7,8 @@ LGFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd -lz
 CFILE = color/1_color \
 		color/2_color \
 		figure/cylinder \
-		figure/figure \
+		figure/figure_1 \
+		figure/figure_2 \
 		figure/plane \
 		figure/sphere \
 		parsing/parsing \
