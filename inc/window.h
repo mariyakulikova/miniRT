@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:39:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/03 17:35:31 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:07:23 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 int		key_hook(int keysym, t_data *data);
 void	start_mlx(t_data *data);
 int		close_window(t_data *data);
+int	ft_mouse(int button, int x, int y, t_data *data);
 
 #endif
