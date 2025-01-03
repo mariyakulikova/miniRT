@@ -6,13 +6,13 @@
 /*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/03 13:39:07 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/03 13:45:14 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_vector *calculate_cylinder_normal(t_figure *f, t_vector *p)
+static t_vector	*calculate_cylinder_normal(t_figure *f, t_vector *p)
 {
 	t_vector	*normal;
 	t_vector	*tmp;
