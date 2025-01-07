@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:33:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:24:14 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:41:12 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_vector	*get_vec(char *str, bool need_check)
 	ft_free_split(s);
 	if (need_check)
 	{
-		if (in_range_float(x, 0.0f, 1.0f) \
-			&& in_range_float(y, 0.0f, 1.0f) \
-			&& in_range_float(z, 0.0f, 1.0f))
+		if (in_range_float(x, -1.0f, 1.0f) \
+			&& in_range_float(y, -1.0f, 1.0f) \
+			&& in_range_float(z, -1.0f, 1.0f))
 			return (new_vec(x, y, z));
 		else
 			return (NULL);
