@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:50:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:53:41 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:20:55 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ t_vector	*get_vec(char *str, bool need_check);
 float		vec_len(t_vector *v);
 void		vec_norm(t_vector *v);
 float		vec_dot_prod(t_vector *v1, t_vector *v2);
+void		vec_multiply(t_vector *v, float t);
+t_vector	*vector_addition(t_vector *a, t_vector *b);
 
 #endif

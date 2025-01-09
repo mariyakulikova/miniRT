@@ -6,7 +6,7 @@
 /*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:31:46 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/03 14:12:15 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/09 12:48:42 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	read_file(*(argv + 1), data);
 	start_mlx(data);
 	preset_ray_tracing(data);
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	mlx_loop(data->win->mlx_ptr);
 	return (0);
 }

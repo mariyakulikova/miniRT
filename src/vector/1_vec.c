@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_vec.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:54:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/22 16:29:05 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 13:20:37 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,25 @@ float	vec_dot_prod(t_vector *v1, t_vector *v2)
 {
 	return ((v1->x * v2->x) + (v1->y * v2->y) + (v1->z * v2->z));
 }
+
+void	vec_multiply(t_vector *v, float t)
+{
+	v->x *= t;
+	v->y *= t;
+	v->z *= t;
+}
+
+t_vector	*vector_addition(t_vector *a, t_vector *b)
+{
+	t_vector	*sum;
+
+	sum = malloc(sizeof(t_vector));
+	if (!sum)
+		return (NULL);
+	sum->x = a->x + b->x;
+	sum->y = a->y + b->y;
+	sum->z = a->z + b->z;
+	return (sum);
+}
+
 

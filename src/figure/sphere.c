@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 21:08:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:30:14 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,32 @@ float sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 		return dist_1;
 	}
 	return 0;  // Нет пересечений
+}
+
+void nearest_sphere(t_data *data, t_dist *dist, t_vector *ray)
+{
+    int i;
+    t_figure *figure;
+    t_list *current;
+
+    i = 0;
+    current = data->scene->fugures;  // Начинаем с первого объекта в списке
+
+    while (current != NULL)  // Пройдем по всем объектам в списке
+    {
+        figure = (t_figure *)current->content;  // Получаем фигуру из списка
+        if (figure->type == SPHERE)  // Если это сфера
+        {
+            dist->dist = sphere_intersect(data->scene->camera, ray, figure);  // Вызов пересечения для сферы
+            if (dist->dist > 0 && dist->dist < dist->min_dist)  // Если пересечение ближе
+            {
+                dist->min_dist = dist->dist;
+                dist->near_obj = SPHERE;  // Помечаем, что объект найден
+                dist->n_obj = i;  // Сохраняем индекс объекта
+            }
+        }
+        current = current->next;  // Переходим к следующему объекту
+        i++;
+    }
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 12:35:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:12:33 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,27 @@ typedef struct s_scene
 	float		hight;
 	t_list		*fugures;
 }	t_scene;
+
+typedef struct s_draw
+{
+	int			mlx_x;        // Координата по оси X для рисования в окне
+	int			mlx_y;        // Координата по оси Y для рисования в окне
+	float		x_angle;      // Угол по оси X для луча
+	float		y_angle;      // Угол по оси Y для луча
+	float		x_ray;        // Координата луча по оси X
+	float		y_ray;        // Координата луча по оси Y
+	t_vector	*ray;         // Указатель на вектор луча
+	int			color;        // Цвет пикселя для рисования
+} t_draw;
+
+typedef struct s_dist
+{
+	float			min_dist;
+	float			dist;
+	int				near_obj;
+	int				n_obj;
+	t_vector		*dot_light;
+}	t_dist;
 
 typedef struct s_img
 {

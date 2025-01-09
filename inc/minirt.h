@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 16:28:15 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:09:29 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <errno.h>
 # include <stdbool.h>
 # include <float.h>
+#include <limits.h>
 # define M_PI 3.14159265358979323846
 # define EPSILON FLT_EPSILON
 # include "../libft/libft.h"
@@ -35,6 +36,5 @@
 # include "tools.h"
 # include "ray_tracing.h"
 # include "parsing.h"
-
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 13:43:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:30:49 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,3 +189,31 @@ int	cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder)
 		return (d_min);
 	return (0);
 }
+
+void nearest_cylinder(t_data *data, t_dist *dist, t_vector *ray)
+{
+    int i;
+    t_figure *figure;
+    t_list *current;
+
+    i = 0;
+    current = data->scene->fugures;  // Начинаем с первого объекта в списке
+
+    while (current != NULL)  // Пройдем по всем объектам в списке
+    {
+        figure = (t_figure *)current->content;  // Получаем фигуру из списка
+        if (figure->type == CYLINDER)  // Если это цилиндр
+        {
+            dist->dist = cylinder_intersect(data->scene->camera, ray, figure);  // Вызов пересечения для цилиндра
+            if (dist->dist > 0 && dist->dist < dist->min_dist)  // Если пересечение ближе
+            {
+                dist->min_dist = dist->dist;
+                dist->near_obj = CYLINDER;  // Помечаем, что объект найден
+                dist->n_obj = i;  // Сохраняем индекс объекта
+            }
+        }
+        current = current->next;  // Переходим к следующему объекту
+        i++;
+    }
+}
+

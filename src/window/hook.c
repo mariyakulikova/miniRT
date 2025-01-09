@@ -6,7 +6,7 @@
 /*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:47:38 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/03 14:11:09 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:35:03 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	key_hook(int keysym, t_data *data)
 		data->scene->camera->fov -= 5;
 
 	// Перерисовка сцены
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	return (0);
 }
 
@@ -47,6 +47,6 @@ int	ft_mouse(int button, int x, int y, t_data *data)
 			data->scene->sphere->radius += 0.1;
 	}
 	// Перерисовка сцены
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	return (0);
 }
