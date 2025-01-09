@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 12:35:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:08:25 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,15 @@ typedef struct s_scene
 	float		hight;
 	t_list		*fugures;
 }	t_scene;
+
+typedef struct s_dist
+{
+    float           min_dist;       // Минимальное расстояние до ближайшей фигуры
+    float           dist;           // Текущее расстояние до фигуры при проверке пересечения
+    int             near_obj;       // Тип ближайшего объекта (для диагностики)
+    t_figure             *n_obj;          // Индекс/ссылка на ближайший объект
+    t_vector        *dot_light;     // Вектор от точки пересечения до источника света
+} t_dist;
 
 typedef struct s_img
 {

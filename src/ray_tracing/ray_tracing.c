@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 16:03:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:32:54 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,72 +28,101 @@ void	preset_ray_tracing(t_data *d)
 		node = node->next;
 	}
 }
-
-float intersect(t_camera *camera, t_vector *ray, t_figure *figure)
+static void	dist_init(t_dist *dist, t_camera *camera, t_vector *ray, t_list *objects)
 {
-	if (figure->type == SPHERE)
-		return sphere_intersect(camera, ray, figure);
-	else if (figure->type == PLANE)
-		return plane_intersect(camera, ray, figure);
-	else if (figure->type == CYLINDER)
-		return cylinder_intersect(camera, ray, figure);
-	return -1; // Нет пересечения
-}
-t_figure *find_closest_figure(t_list *list, t_camera *camera, t_vector *ray, float *closest_t)
-{
-	t_list *node = list;
-	t_figure *closest = NULL;
-	*closest_t = FLT_MAX;
-
-	while (node) {
+	dist->dot_light = malloc(sizeof(t_vector));  // Для хранения направления на источник света
+	dist->near_obj = 0;  // Изначально нет ближайшего объекта
+	dist->n_obj = NULL;  // Изначально нет объекта
+	dist->min_dist = FLT_MAX;
+	t_list *node = objects;  // Устанавливаем максимально возможное расстояние
+	while (node)
+	{
 		t_figure *figure = (t_figure *)node->content;
-		float t = intersect(camera, ray, figure);
-		if (t > EPSILON && t < *closest_t) {
-			*closest_t = t;
-			closest = figure;
+		if (figure->type == SPHERE)
+			dist->dist = sphere_intersect(camera, ray, figure);  // Пересечение с шаром
+		else if (figure->type == PLANE)
+			dist->dist = plane_intersect(camera, ray, figure);  // Пересечение с плоскостью
+		else if (figure->type == CYLINDER)
+			dist->dist = cylinder_intersect(camera, ray, figure);  // Пересечение с цилиндром
+        // Если пересечение найдено и оно ближе, чем ранее найденное минимальное, обновляем
+		if (dist->dist > EPSILON && dist->dist < dist->min_dist)
+		{
+			dist->min_dist = dist->dist;
+			dist->near_obj = figure->type;  // Запоминаем тип ближайшей фигуры
+			dist->n_obj = figure;  // Запоминаем указатель на ближайшую фигуру
 		}
 		node = node->next;
 	}
-	return closest;
 }
 
-// Функция трассировки лучей
-void ray_tracing(void *mlx, void *window, t_data *d)
+
+// float intersect(t_camera *camera, t_vector *ray, t_figure *figure)
+// {
+// 	if (figure->type == SPHERE)
+// 		return sphere_intersect(camera, ray, figure);
+// 	else if (figure->type == PLANE)
+// 		return plane_intersect(camera, ray, figure);
+// 	else if (figure->type == CYLINDER)
+// 		return cylinder_intersect(camera, ray, figure);
+// 	return -1; // Нет пересечения
+// }
+t_figure	*find_closest_figure(t_list *list, t_camera *camera, t_vector *ray, float *closest_t)
 {
-	int mlx_x, mlx_y;
-	float x_angle, y_angle, y_ray, x_ray;
-	int color;
-	t_vector *ray;
-	t_vport *vplane;
-	float closest_t;
+	t_dist dist;  // Структура для нахождения ближайшего объекта
 
-	vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
+	*closest_t = FLT_MAX;  // Изначально нет ближайшего объекта
+    // Инициализация и поиск ближайшего объекта
+	dist_init(&dist, camera, ray, list);
+    // Если нашли ближайший объект, возвращаем его
+	if (dist.n_obj != NULL)
+	{
+		*closest_t = dist.min_dist;
+		return dist.n_obj;  // Возвращаем ближайшую фигуру
+	}
+	return (NULL);  // Если фигуры нет, возвращаем NULL
+}
 
-	mlx_y = 0;
-	y_angle = (d->scene->hight / 2);
+void	ray_tracing(void *mlx, void *window, t_data *d)
+{
+	t_ray_tracing_params	params;
+	int						color;
 
-	while (y_angle >= (d->scene->hight / 2) * (-1)) {
-		y_ray = y_angle * vplane->y_pixel;
-		x_angle = (d->scene->width / 2) * (-1);
-		mlx_x = 0;
-
-		while (x_angle <= d->scene->width / 2) {
-			x_ray = x_angle * vplane->x_pixel;
-			ray = new_vec(x_ray, y_ray, -1);  // Направление луча
-			vec_norm(ray);  // Нормализуем луч
-
-			t_figure *closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera, ray, &closest_t);
-			if (closest_t < FLT_MAX) {
-				color = get_figure_color(closest_figure, ray, closest_t, d); // Получаем цвет фигуры
-			} else {
-				color = 16777215;  // Цвет фона 16776960
+	params.vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
+	params.mlx_y = 0;
+	params.y_angle = (d->scene->hight / 2);
+	while (params.y_angle >= (d->scene->hight / 2) * (-1))
+	{
+		params.y_ray = params.y_angle * params.vplane->y_pixel;
+		params.x_angle = (d->scene->width / 2) * (-1);
+		params.mlx_x = 0;
+		while (params.x_angle <= d->scene->width / 2)
+		{
+			params.x_ray = params.x_angle * params.vplane->x_pixel;
+			params.ray = new_vec(params.x_ray, params.y_ray, -1);  // Направление луча
+			vec_norm(params.ray);  // Нормализуем луч
+			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera, params.ray, &params.closest_t);
+			if (params.closest_t < FLT_MAX)
+			{
+				color = get_figure_color(params.closest_figure, params.ray, params.closest_t, d);// Получаем цвет фигуры
+			// Я так понимаю, что тень должна считаться где-то в этом месте и если тень есть, то ты меняешь color
+			/*
+			1.Вычисляешь точку пересечения с объектом
+			2.Направление от точки пересечения к источнику света + нормализуешь
+			3.Рассчитываешь, есть ли тень на точке пересечения луча, и, если тень есть,
+			она будет определять её цвет, исходя из положения объектов сцены и источника света.
+			4.Если тень есть, то изменяешь цвет
+			*/
 			}
-			mlx_pixel_put(mlx, window, mlx_x, mlx_y, color);  // Рисуем пиксель
-			free(ray);  // Освобождаем память
-			x_angle++;
-			mlx_x++;
+			else
+			color = 16777215;  // Цвет фона 16776960
+			mlx_pixel_put(mlx, window, params.mlx_x, params.mlx_y, color);  // Рисуем пиксель
+			free(params.ray);  // Освобождаем память
+			params.x_angle++;
+			params.mlx_x++;
 		}
-		y_angle--;
-		mlx_y++;
+		params.y_angle--;
+		params.mlx_y++;
 	}
 }
+
+
