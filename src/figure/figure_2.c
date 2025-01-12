@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/03 13:45:14 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:37:49 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d)
 	if (!normal)
 		print_error(1, "malloc error", d);
 
-	printf("normal: (%f, %f, %f) | ", normal->x, normal->y, normal->z);
+	// printf("normal: (%f, %f, %f) | ", normal->x, normal->y, normal->z);
 	vec_norm(normal);
 	return (normal);
 }
@@ -87,20 +87,20 @@ int	get_figure_color(t_figure *figure, t_vector *ray, float t, t_data *d)
 	int			res;
 	t_color		*tmp;
 
-	printf("ray: (%f, %f, %f), t: %f | ", ray->x, ray->y, ray->z, t);
+	// printf("ray: (%f, %f, %f), t: %f | ", ray->x, ray->y, ray->z, t);
 
 	p = get_p_point(d->scene->camera->origin, ray, t, d);
-	printf("p: (%f, %f, %f) ", p->x, p->y, p->z);
+	// printf("p: (%f, %f, %f) ", p->x, p->y, p->z);
 
 	light_vec = vec_sub(d->scene->light->coord, p);
-	printf("light_vec: (%f, %f, %f) ", light_vec->x, light_vec->y, light_vec->z);
+	// printf("light_vec: (%f, %f, %f) ", light_vec->x, light_vec->y, light_vec->z);
 
 	vec_norm(light_vec);
 	normal = get_normal(figure, p, d);
-	printf("lv_norm: (%f, %f, %f) ", light_vec->x, light_vec->y, light_vec->z);
-	printf("n_norm: (%f, %f, %f) | ", normal->x, normal->y, normal->z);
+	// printf("lv_norm: (%f, %f, %f) ", light_vec->x, light_vec->y, light_vec->z);
+	// printf("n_norm: (%f, %f, %f) | ", normal->x, normal->y, normal->z);
 	light_dot_normal = vec_dot_prod(light_vec, normal);
-	printf("dot: %f\n", light_dot_normal);
+	// printf("dot: %f\n", light_dot_normal);
 
 	diffuse = get_diffuse_color(d, figure, light_dot_normal);
 	tmp = color_add(figure->a_color, diffuse);

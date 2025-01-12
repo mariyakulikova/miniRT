@@ -6,11 +6,27 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:16:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:23:21 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/12 15:57:34 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	replace_tab(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+	{
+		if (*(s + i) == '\f' \
+			|| *(s + i) == '\r' \
+			|| *(s + i) == '\t' \
+			|| *(s + i) == '\v')
+			*(s + i) = ' ';
+		i++;
+	}
+}
 
 bool	is_lower(char i)
 {
