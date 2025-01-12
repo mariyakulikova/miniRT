@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/12 15:58:58 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:47:41 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,14 @@ void	read_file(char *file, t_data *data)
 		if (len == 0)
 			break ;
 		if (len && (line[0] == '\n'))
+		{
+			free(line);
 			continue ;
+		}
 		replace_tab(line);
 		parse_line(line, data);
 		free(line);
 	}
+	free(line);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/09 18:37:49 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:10:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ int	get_figure_color(t_figure *figure, t_vector *ray, float t, t_data *d)
 	free(normal);
 	free(diffuse);
 	free(tmp);
+	free(p);
 	return (res);
 }

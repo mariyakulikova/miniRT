@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 13:26:30 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/03 14:05:09 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:05:39 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ int	close_window(t_data *data)
 	mlx_destroy_image(data->win->mlx_ptr, data->win->img.ptr);
 	mlx_destroy_window(data->win->mlx_ptr, data->win->win_ptr);
 	mlx_destroy_display(data->win->mlx_ptr);
-	// TODO free t_data and others it has
-	free(data->win);
-	free(data->scene);
-	free(data);
+	ultimate_free(data);
 	exit (0);
 }
 

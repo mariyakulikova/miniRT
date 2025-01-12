@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 12:35:06 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/12 16:33:54 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct s_figure
 	float		diameter;
 }	t_figure;
 
-
 typedef struct s_vport
 {
 	float		width;
@@ -94,9 +93,9 @@ typedef struct s_scene
 	t_sphere	*sphere;
 	t_a_light	*a_light;
 	t_light		*light;
+	t_list		*fugures;
 	float		width;
 	float		hight;
-	t_list		*fugures;
 }	t_scene;
 
 typedef struct s_img

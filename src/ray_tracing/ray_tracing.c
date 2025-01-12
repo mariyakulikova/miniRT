@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/07 17:04:24 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:26:17 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ void ray_tracing(void *mlx, void *window, t_data *d)
 		y_angle--;
 		mlx_y++;
 	}
+	free(vplane);
 }
