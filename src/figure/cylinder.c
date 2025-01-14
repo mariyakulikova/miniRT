@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 13:43:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:20:27 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,11 +130,11 @@ static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, t_figure *c
 	// Вектор от камеры до цилиндра
 	camera_to_cylinder = vec_sub(camera->origin, cylinder->coord);
 	// Вычисление коэффициентов квадратного уравнения
-	a = vec_dot_prod(ray, ray) - pow(vec_dot_prod(ray, cylinder->norm_v3d), 2);
+	a = vec_dot_prod(ray, ray) - powf(vec_dot_prod(ray, cylinder->norm_v3d), 2.0f);
 	b = 2 * (vec_dot_prod(ray, camera_to_cylinder) -
 			(vec_dot_prod(ray, cylinder->norm_v3d) * vec_dot_prod(camera_to_cylinder, cylinder->norm_v3d)));
 	c = vec_dot_prod(camera_to_cylinder, camera_to_cylinder) -
-		pow(vec_dot_prod(camera_to_cylinder, cylinder->norm_v3d), 2) - pow(cylinder->diameter / 2, 2);
+		powf(vec_dot_prod(camera_to_cylinder, cylinder->norm_v3d), 2.0f) - powf(cylinder->diameter / 2.0f, 2.0f);
 	discriminant = b * b - 4 * a * c;
 	// Если дискриминант меньше нуля, пересечений нет
 	if (discriminant < 0)
@@ -143,8 +143,8 @@ static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, t_figure *c
 		return ;
 	}
 	// Вычисление расстояний до пересечения
-	t1 = (-b - sqrt(discriminant)) / (2 * a);
-	t2 = (-b + sqrt(discriminant)) / (2 * a);
+	t1 = (-b - sqrtf(discriminant)) / (2 * a);
+	t2 = (-b + sqrtf(discriminant)) / (2 * a);
 	// Проверка, попадает ли пересечение на боковую поверхность
 	m = vec_dot_prod(ray, cylinder->norm_v3d) * t1 +
 		vec_dot_prod(camera_to_cylinder, cylinder->norm_v3d);
@@ -157,7 +157,7 @@ static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, t_figure *c
 	free(camera_to_cylinder);
 }
 
-int	cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder)
+float	cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder)
 {
 	float		d_min;
 	float		dist_disc[2];
