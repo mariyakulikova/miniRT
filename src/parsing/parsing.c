@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/12 17:47:41 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/14 12:46:26 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	check_empty_file(char *file)
 
 	fd = open_file(file);
 	line = get_next_line(fd);
-	if (!line)
+	if (!*line)
 		print_error(-1, "Empty file\n", NULL);
 	free(line);
 }
