@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 11:05:52 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:06:56 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_scene
 	t_list		*fugures;
 	float		width;
 	float		hight;
+	t_vport		*vplane;
 }	t_scene;
 
 typedef struct s_dist

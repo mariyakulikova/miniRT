@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:41:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/09 16:08:31 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:06:01 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_ray_tracing_params {
     float closest_t;
     t_figure *closest_figure;
     t_vector *ray;
-    t_vport *vplane;
 } t_ray_tracing_params;
 
 void	ray_tracing(void *mlx, void *window, t_data *d);

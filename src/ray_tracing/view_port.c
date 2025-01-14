@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 16:33:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 15:14:48 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:15:56 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_vport	*get_view_port(float width, float hight, float fov)
 	vp->hight = vp->width / aspect_ratio;
 	vp->x_pixel = vp->width / width;
 	vp->y_pixel = vp->hight / hight;
-	//vp->d = width / (2 * tg(fov / 2));
+	
 	return (vp);
 }
 

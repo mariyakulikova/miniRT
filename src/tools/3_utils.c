@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 16:12:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/12 18:05:58 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:09:05 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ void	ultimate_free(t_data *data)
 		free(data->win);
 	}
 	if (data->scene)
-	{
+	{	
+		if (data->scene->vplane)
+			free(data->scene->vplane);
 		if (data->scene->camera)
 			free_camera(data->scene->camera);
 		if (data->scene->light)

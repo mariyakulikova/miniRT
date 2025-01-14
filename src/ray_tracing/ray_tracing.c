@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 11:44:51 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:11:08 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	preset_ray_tracing(t_data *d)
 	t_list		*node;
 	t_figure	*f;
 
+	d->scene->vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
 	node = d->scene->fugures;
 	while (node)
 	{
@@ -87,17 +88,16 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 	t_ray_tracing_params	params;
 	int						color;
 
-	params.vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
 	params.mlx_y = 0;
 	params.y_angle = (d->scene->hight / 2) + (d->scene->camera->direction->y * d->scene->hight / 2.0f);
 	while (params.y_angle > ((d->scene->hight / 2) * (-1) + (d->scene->camera->direction->y * d->scene->hight / 2.0f)))
 	{
-		params.y_ray = params.y_angle * params.vplane->y_pixel;
+		params.y_ray = params.y_angle * d->scene->vplane->y_pixel;
 		params.x_angle = (d->scene->width / 2) * (-1) + (d->scene->camera->direction->x * d->scene->hight / 2.0f);
 		params.mlx_x = 0;
 		while (params.x_angle < (d->scene->width / 2) + (d->scene->camera->direction->x * d->scene->hight / 2.0f))
 		{
-			params.x_ray = params.x_angle * params.vplane->x_pixel;
+			params.x_ray = params.x_angle * d->scene->vplane->x_pixel;
 			params.ray = new_vec(params.x_ray, params.y_ray, d->scene->camera->direction->z);  // Направление луча
 			vec_norm(params.ray);  // Нормализуем луч
 			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera, params.ray, &params.closest_t);
@@ -123,7 +123,6 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 		params.y_angle--;
 		params.mlx_y++;
 	}
-	free(params.vplane);
 }
 
 
