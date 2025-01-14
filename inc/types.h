@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/09 16:08:25 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:05:52 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct s_figure
 	float		diameter;
 }	t_figure;
 
-
 typedef struct s_vport
 {
 	float		width;
@@ -94,9 +93,9 @@ typedef struct s_scene
 	t_sphere	*sphere;
 	t_a_light	*a_light;
 	t_light		*light;
+	t_list		*fugures;
 	float		width;
 	float		hight;
-	t_list		*fugures;
 }	t_scene;
 
 typedef struct s_dist

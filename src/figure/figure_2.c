@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/09 15:25:48 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:08:08 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d)
 {
 	t_vector	*normal;
 
+	normal = NULL;
 	if (f->type == SPHERE)
 		normal = vec_sub(p, f->coord);
 	else if (f->type == PLANE)
@@ -98,5 +99,6 @@ int	get_figure_color(t_figure *figure, t_vector *ray, float t, t_data *d)
 	free(normal);
 	free(diffuse);
 	free(tmp);
+	free(p);
 	return (res);
 }

@@ -20,6 +20,7 @@ CFILE = color/1_color \
 		scene/scene \
 		tools/1_utils \
 		tools/2_utils \
+		tools/3_utils \
 		vector/1_vec \
 		vector/2_vec \
 		window/hook \

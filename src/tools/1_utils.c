@@ -6,30 +6,11 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:42:38 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 16:12:15 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/12 16:12:02 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-void	print_error(int i, char *msg, t_data *data)
-{
-	if (i == -1)
-	{
-		write(STDERR_FILENO, "Error\n", 6);
-		if (msg)
-			write(STDERR_FILENO, msg, ft_strlen(msg));
-	}
-	if (data)
-	{
-		if (data->win)
-			free(data->win);
-		if (data->scene)
-			free(data->scene);
-		free(data);
-	}
-	exit(i);
-}
 
 int	open_file(char *file)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/03 11:52:27 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:47:41 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,14 @@ void	read_file(char *file, t_data *data)
 		if (len == 0)
 			break ;
 		if (len && (line[0] == '\n'))
+		{
+			free(line);
 			continue ;
+		}
+		replace_tab(line);
 		parse_line(line, data);
 		free(line);
 	}
+	free(line);
 	close(fd);
 }

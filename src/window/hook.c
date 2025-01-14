@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:47:38 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/09 15:34:07 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:04:47 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ int	key_hook(int keysym, t_data *data)
 
 int	ft_mouse(int button, int x, int y, t_data *data)
 {
+	(void)x;
+	(void)y;
 	if (button == Button1) // Левая кнопка мыши
 	{
-		printf("Mouse clicked at (%d, %d)\n", x, y);
+		// printf("Mouse clicked at (%d, %d)\n", x, y);
 		// Пример: Изменение радиуса первого объекта
 		if (data->scene->sphere)
 			data->scene->sphere->radius += 1;

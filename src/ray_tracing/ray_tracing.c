@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/09 16:32:54 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/14 11:44:51 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,16 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 
 	params.vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
 	params.mlx_y = 0;
-	params.y_angle = (d->scene->hight / 2);
-	while (params.y_angle >= (d->scene->hight / 2) * (-1))
+	params.y_angle = (d->scene->hight / 2) + (d->scene->camera->direction->y * d->scene->hight / 2.0f);
+	while (params.y_angle > ((d->scene->hight / 2) * (-1) + (d->scene->camera->direction->y * d->scene->hight / 2.0f)))
 	{
 		params.y_ray = params.y_angle * params.vplane->y_pixel;
-		params.x_angle = (d->scene->width / 2) * (-1);
+		params.x_angle = (d->scene->width / 2) * (-1) + (d->scene->camera->direction->x * d->scene->hight / 2.0f);
 		params.mlx_x = 0;
-		while (params.x_angle <= d->scene->width / 2)
+		while (params.x_angle < (d->scene->width / 2) + (d->scene->camera->direction->x * d->scene->hight / 2.0f))
 		{
 			params.x_ray = params.x_angle * params.vplane->x_pixel;
-			params.ray = new_vec(params.x_ray, params.y_ray, -1);  // Направление луча
+			params.ray = new_vec(params.x_ray, params.y_ray, d->scene->camera->direction->z);  // Направление луча
 			vec_norm(params.ray);  // Нормализуем луч
 			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera, params.ray, &params.closest_t);
 			if (params.closest_t < FLT_MAX)
@@ -123,6 +123,7 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 		params.y_angle--;
 		params.mlx_y++;
 	}
+	free(params.vplane);
 }
 
 
