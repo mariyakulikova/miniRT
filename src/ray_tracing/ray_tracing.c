@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 11:44:51 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/15 21:41:37 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,26 @@ t_figure	*find_closest_figure(t_list *list, t_camera *camera, t_vector *ray, flo
 	return (NULL);  // Если фигуры нет, возвращаем NULL
 }
 
+t_figure	*is_shadowed(t_ray_tracing_params	*params, t_data *d, t_vector *p)
+{
+	t_figure	*f;
+	t_vector	*l_ray;
+	float		distance;
+
+	l_ray = vec_sub(d->scene->light->coord, p);
+	distance = vec_len(l_ray);
+	vec_norm(l_ray);
+	f = find_closest_figure();
+
+}
+
 void	ray_tracing(void *mlx, void *window, t_data *d)
 {
 	t_ray_tracing_params	params;
 	int						color;
+	t_vector				*p; // точка пересечения с объектом
+	bool					is_shadow;
+
 
 	params.vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
 	params.mlx_y = 0;
@@ -101,9 +117,11 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 			params.ray = new_vec(params.x_ray, params.y_ray, d->scene->camera->direction->z);  // Направление луча
 			vec_norm(params.ray);  // Нормализуем луч
 			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera, params.ray, &params.closest_t);
+			p = get_p_point(d->scene->camera->origin, params.ray, params.closest_t, d); // Вычисляешь точку пересечения с канвой?
+			is_shadow = is_shadowed(&params, d, p);
 			if (params.closest_t < FLT_MAX)
 			{
-				color = get_figure_color(params.closest_figure, params.ray, params.closest_t, d);// Получаем цвет фигуры
+				color = get_figure_color(params.closest_figure, p, d);// Получаем цвет фигуры
 			// Я так понимаю, что тень должна считаться где-то в этом месте и если тень есть, то ты меняешь color
 			/*
 			1.Вычисляешь точку пересечения с объектом

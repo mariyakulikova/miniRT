@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 11:08:08 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:21:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_color	*get_diffuse_color(t_data *d, t_figure *figure, float light_dot_n
 	return (diffuse);
 }
 
-static t_vector	*get_p_point(t_vector *camera, t_vector *ray, float t, t_data *d)
+t_vector	*get_p_point(t_vector *camera, t_vector *ray, float t, t_data *d)
 {
 	t_vector	*p;
 	float		x;
@@ -76,17 +76,14 @@ static t_vector	*get_p_point(t_vector *camera, t_vector *ray, float t, t_data *d
 	return (p);
 }
 
-int	get_figure_color(t_figure *figure, t_vector *ray, float t, t_data *d)
+int	get_figure_color(t_figure *figure, t_vector *p, t_data *d)
 {
 	t_vector	*light_vec;
 	t_vector	*normal;
-	t_vector	*p;
 	t_color		*diffuse;
 	float		light_dot_normal;
 	int			res;
 	t_color		*tmp;
-
-	p = get_p_point(d->scene->camera->origin, ray, t, d);
 
 	light_vec = vec_sub(d->scene->light->coord, p);
 	vec_norm(light_vec);
