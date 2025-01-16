@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/15 17:21:14 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:47:34 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static t_color	*get_diffuse_color(t_data *d, t_figure *figure, float light_dot_n
 {
 	t_color	*diffuse;
 
+	diffuse = NULL;
 	if (light_dot_normal < 0)
 		diffuse = new_color(0, 0, 0);
 	else
@@ -76,7 +77,7 @@ t_vector	*get_p_point(t_vector *camera, t_vector *ray, float t, t_data *d)
 	return (p);
 }
 
-int	get_figure_color(t_figure *figure, t_vector *p, t_data *d)
+int	get_figure_color(bool is_shadow, t_figure *figure, t_vector *p, t_data *d)
 {
 	t_vector	*light_vec;
 	t_vector	*normal;
@@ -85,6 +86,12 @@ int	get_figure_color(t_figure *figure, t_vector *p, t_data *d)
 	int			res;
 	t_color		*tmp;
 
+	res = 0;
+	if (is_shadow)
+	{
+		res = color_to_int(figure->a_color);
+		return (res);
+	}
 	light_vec = vec_sub(d->scene->light->coord, p);
 	vec_norm(light_vec);
 	normal = get_normal(figure, p, d);

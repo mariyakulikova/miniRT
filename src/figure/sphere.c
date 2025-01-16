@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 21:08:13 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/16 11:53:09 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ t_figure	*get_sphere(t_ftype type, char **s)
 }
 
 // Функция вычисления пересечения с сферой
-float sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
+float sphere_intersect(t_vector *camera, t_vector *ray, t_figure *sphere)
 {
 	float  b, c, discr, dist_1, dist_squared, radius_squared;
 	t_vector *camera_sphere;
 
 	// Вектор от камеры к центру сферы
-	camera_sphere = vec_sub(camera->origin, sphere->coord);
+	camera_sphere = vec_sub(camera, sphere->coord);
 
 	// Расстояние между камерой и центром сферы
 	dist_squared = vec_dot_prod(camera_sphere, camera_sphere);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 11:20:27 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:12:41 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_figure	*get_cylinder(t_ftype type, char **s)
 
 */
 
-static float base_intersect(t_camera *camera, t_vector *ray, t_figure *plane, float radius)
+static float base_intersect(t_vector *camera, t_vector *ray, t_figure *plane, float radius)
 {
 	float		distance;
 	t_vector	*intersection_point;
@@ -103,9 +103,9 @@ static float base_intersect(t_camera *camera, t_vector *ray, t_figure *plane, fl
 	{
 		// Точка пересечения
 		intersection_point = new_vec(
-			camera->origin->x + ray->x * distance,
-			camera->origin->y + ray->y * distance,
-			camera->origin->z + ray->z * distance
+			camera->x + ray->x * distance,
+			camera->y + ray->y * distance,
+			camera->z + ray->z * distance
 		);
 		// Проверка, находится ли точка в пределах радиуса диска
 		camera_to_point = vec_sub(intersection_point, plane->coord);
@@ -121,14 +121,14 @@ static float base_intersect(t_camera *camera, t_vector *ray, t_figure *plane, fl
 	return (0);
 }
 
-static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder, float *d_min)
+static void	lateral_plane_intersect(t_vector *camera, t_vector *ray, t_figure *cylinder, float *d_min)
 {
 	t_vector	*camera_to_cylinder;
 	float		a, b, c, discriminant;
 	float		t1, t2, m;
 
 	// Вектор от камеры до цилиндра
-	camera_to_cylinder = vec_sub(camera->origin, cylinder->coord);
+	camera_to_cylinder = vec_sub(camera, cylinder->coord);
 	// Вычисление коэффициентов квадратного уравнения
 	a = vec_dot_prod(ray, ray) - powf(vec_dot_prod(ray, cylinder->norm_v3d), 2.0f);
 	b = 2 * (vec_dot_prod(ray, camera_to_cylinder) -
@@ -157,7 +157,7 @@ static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, t_figure *c
 	free(camera_to_cylinder);
 }
 
-float	cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder)
+float	cylinder_intersect(t_vector *camera, t_vector *ray, t_figure *cylinder)
 {
 	float		d_min;
 	float		dist_disc[2];
