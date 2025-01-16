@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 14:11:08 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:07:23 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,6 @@ static void	dist_init(t_dist *dist, t_camera *camera, t_vector *ray, t_list *obj
 	}
 }
 
-
-// float intersect(t_camera *camera, t_vector *ray, t_figure *figure)
-// {
-// 	if (figure->type == SPHERE)
-// 		return sphere_intersect(camera, ray, figure);
-// 	else if (figure->type == PLANE)
-// 		return plane_intersect(camera, ray, figure);
-// 	else if (figure->type == CYLINDER)
-// 		return cylinder_intersect(camera, ray, figure);
-// 	return -1; // Нет пересечения
-// }
 t_figure	*find_closest_figure(t_list *list, t_camera *camera, t_vector *ray, float *closest_t)
 {
 	t_dist dist;  // Структура для нахождения ближайшего объекта

@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:21:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/23 16:28:15 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:22:30 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include "tools.h"
 # include "ray_tracing.h"
 # include "parsing.h"
+# include "hook1.h"
 
 
 #endif
