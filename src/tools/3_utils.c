@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   3_utils.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/12 16:12:12 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 14:09:05 by alvutina         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   3_utils.c										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: alvutina <alvutina@student.42.fr>		  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/01/12 16:12:12 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2025/01/14 14:09:05 by alvutina		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -62,7 +62,7 @@ void	ultimate_free(t_data *data)
 		free(data->win);
 	}
 	if (data->scene)
-	{	
+	{
 		if (data->scene->vplane)
 			free(data->scene->vplane);
 		if (data->scene->camera)

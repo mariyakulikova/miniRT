@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   light.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 17:54:44 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 13:33:13 by mkulikov         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   light.c											:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: mkulikov <mkulikov@student.42berlin.de>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/11/27 17:54:44 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2024/12/28 13:33:13 by mkulikov		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -46,7 +46,7 @@ t_light	*get_light(char **s)
 		return (NULL);
 	}
 	l_color = color_by_scaler(color, ratio);
-		if (!l_color)
+	if (!l_color)
 	{
 		free(vector);
 		free(color);

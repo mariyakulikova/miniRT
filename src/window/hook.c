@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 12:47:38 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 20:39:30 by cmarguer         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   hook.c											 :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: cmarguer <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/10/18 12:47:38 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2025/01/17 15:32:53 by cmarguer		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -26,10 +26,10 @@ static void	ft_key_hook_camera(int keycode, t_data *data)
 
 static void	ft_key_hook_objects(int keycode, t_data *data)
 {
-    if (keycode == XK_i || keycode == XK_k || keycode == XK_j || keycode == XK_l)
-        ft_translate_hook(keycode, data);
-    if (keycode == XK_r || keycode == XK_t || keycode == XK_y)
-        ft_rotate_hook(keycode, data);
+	if (keycode == XK_i || keycode == XK_k || keycode == XK_j || keycode == XK_l)
+		ft_translate_hook(keycode, data);
+	if (keycode == XK_r || keycode == XK_t || keycode == XK_y)
+		ft_rotate_hook(keycode, data);
 }
 
 int	key_hook(int keycode, t_data *data)
@@ -51,5 +51,22 @@ int	key_hook(int keycode, t_data *data)
 	ft_key_hook_camera(keycode, data);
 	ft_key_hook_objects(keycode, data);
 	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	return (0);
+}
+
+int	mouse_hook(int button, int x, int y, t_data *data)
+{
+	t_vector	*ray_dir;
+
+	if (button == 1) // Left click
+	{
+		ray_dir = calculate_ray_direction(x, y, data);
+		data->m_dist.min_dist = FLT_MAX;
+		dist_init(&data->m_dist, data->scene->camera, \
+		ray_dir, data->scene->fugures);
+		printf("Selected object type: %d\n", data->m_dist.near_obj);
+		printf("Selected object index: %p\n", (void *)data->m_dist.n_obj);
+		free(ray_dir);
+	}
 	return (0);
 }

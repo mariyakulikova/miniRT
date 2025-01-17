@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/28 21:08:13 by mkulikov         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   sphere.c										   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: mkulikov <mkulikov@student.42berlin.de>	+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/10/21 11:40:53 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2024/12/28 21:08:13 by mkulikov		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -33,37 +33,29 @@ t_figure	*get_sphere(t_ftype type, char **s)
 }
 
 // Функция вычисления пересечения с сферой
-float sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
+float	sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
 {
-	float  b, c, discr, dist_1, dist_squared, radius_squared;
-	t_vector *camera_sphere;
+	t_sphere_intersect	si;
+	t_vector			*camera_sphere;
 
-	// Вектор от камеры к центру сферы
+
 	camera_sphere = vec_sub(camera->origin, sphere->coord);
-
-	// Расстояние между камерой и центром сферы
-	dist_squared = vec_dot_prod(camera_sphere, camera_sphere);
-	radius_squared = powf(sphere->diameter / 2.0f, 2.0f);
-
-	// Проверка, если камера внутри сферы
-	if (dist_squared < radius_squared) {
+	si.dist_squared = vec_dot_prod(camera_sphere, camera_sphere);
+	si.radius_squared = powf(sphere->diameter / 2.0f, 2.0f);
+	if (si.dist_squared < si.radius_squared)
+	{
 		free(camera_sphere);
-		return 0;  // Нет пересечения, так как камера внутри сферы
+		return (0);
 	}
-	// Дискриминант для квадратичного уравнения
-	b = 2.0f * vec_dot_prod(camera_sphere, ray);  // Удваиваем скалярное произведение
-	c = dist_squared - radius_squared;  // Вычисление c
-	discr = powf(b, 2.0f) - 4.0f * c;  // Вычисление дискриминанта
+	si.b = 2.0f * vec_dot_prod(camera_sphere, ray);
+	si.c = si.dist_squared - si.radius_squared;
+	si.discr = powf(si.b, 2.0f) - 4.0f * si.c;
 	free(camera_sphere);
-	// Если дискриминант отрицателен, нет пересечений
-	if (discr < 0) {
-		return 0;
-	}
-	dist_1 = (-b - sqrtf(discr)) / 2.0f;  // Первый корень
-	// Если первый корень положительный, есть пересечение
-	if (dist_1 > 0) {
-		return dist_1;
-	}
-	return 0;  // Нет пересечений
+	if (si.discr < 0)
+		return (0);
+	si.dist_1 = (-si.b - sqrtf(si.discr)) / 2.0f;
+	if (si.dist_1 > 0)
+		return (si.dist_1);
+	return (0);
 }
 

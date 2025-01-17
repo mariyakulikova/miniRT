@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 10:50:52 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:53:41 by mkulikov         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   vector.h										   :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: cmarguer <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/10/18 10:50:52 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2025/01/17 15:35:12 by cmarguer		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
@@ -19,5 +19,6 @@ t_vector	*get_vec(char *str, bool need_check);
 float		vec_len(t_vector *v);
 void		vec_norm(t_vector *v);
 float		vec_dot_prod(t_vector *v1, t_vector *v2);
+t_vector	*calculate_ray_direction(int x, int y, t_data *data);
 
 #endif

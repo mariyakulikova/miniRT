@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/14 12:52:30 by alvutina         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   parsing.c										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: alvutina <alvutina@student.42.fr>		  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/11/20 16:33:57 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2025/01/14 12:52:30 by alvutina		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -54,10 +54,11 @@ static void	parse_scene_features(t_data *data, char **s)
 
 static void	parse_figures(t_data *data, char **s)
 {
-	t_figure	*figure = NULL;
+	t_figure	*figure;
 	t_list		*node;
 	t_ftype		type;
 
+	figure = NULL;
 	type = get_ftype(s[0]);
 	if (type == UNDEFINED)
 		print_error(-1, "undefined figure type", data);

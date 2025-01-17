@@ -25,6 +25,7 @@ CFILE = color/1_color \
 		vector/2_vec \
 		window/hook \
 		window/hook1 \
+		window/hook2 \
 		window/win \
 		main
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))

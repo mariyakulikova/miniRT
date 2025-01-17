@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   types.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 15:17:48 by alvutina         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   types.h											:+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: alvutina <alvutina@student.42.fr>		  +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/11/22 15:19:03 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2025/01/16 15:17:48 by alvutina		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef TYPES_H
@@ -44,6 +44,28 @@ typedef enum e_ftype
 	PLANE,
 	CYLINDER
 }	t_ftype;
+
+typedef struct s_cylinder_intersect
+{
+	float		a;
+	float		b;
+	float		c;
+	float		discriminant;
+	float		t1;
+	float		t2;
+	float		m;
+	t_vector	*camera_to_cylinder;
+}	t_cylinder_intersect;
+
+typedef struct s_sphere_intersect
+{
+	float	b;
+	float	c;
+	float	discr;
+	float	dist_1;
+	float	dist_squared;
+	float	radius_squared;
+}	t_sphere_intersect;
 
 typedef struct s_figure
 {
@@ -101,12 +123,12 @@ typedef struct s_scene
 
 typedef struct s_dist
 {
-    float           min_dist;       // Минимальное расстояние до ближайшей фигуры
-    float           dist;           // Текущее расстояние до фигуры при проверке пересечения
-    int             near_obj;       // Тип ближайшего объекта (для диагностики)
-    t_figure             *n_obj;          // Индекс/ссылка на ближайший объект
-    t_vector        *dot_light;     // Вектор от точки пересечения до источника света
-} t_dist;
+	float			min_dist;	   // Минимальное расстояние до ближайшей фигуры
+	float			dist;		   // Текущее расстояние до фигуры при проверке пересечения
+	int				near_obj;	   // Тип ближайшего объекта (для диагностики)
+	t_figure		*n_obj;		  // Индекс/ссылка на ближайший объект
+	t_vector		*dot_light;	 // Вектор от точки пересечения до источника света
+}	t_dist;
 
 typedef struct s_img
 {

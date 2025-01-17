@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ray_tracing.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 13:07:23 by alvutina         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ray_tracing.c									  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: cmarguer <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/10/21 12:14:03 by mkulikov		  #+#	#+#			 */
+/*   Updated: 2025/01/17 15:36:34 by cmarguer		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -17,7 +17,8 @@ void	preset_ray_tracing(t_data *d)
 	t_list		*node;
 	t_figure	*f;
 
-	d->scene->vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
+	d->scene->vplane = get_view_port(d->scene->width, d->scene->hight, \
+	d->scene->camera->fov);
 	node = d->scene->fugures;
 	while (node)
 	{
@@ -29,47 +30,50 @@ void	preset_ray_tracing(t_data *d)
 		node = node->next;
 	}
 }
-static void	dist_init(t_dist *dist, t_camera *camera, t_vector *ray, t_list *objects)
+
+void	dist_init(t_dist *dist, t_camera *camera, \
+						t_vector *ray, t_list *objects)
 {
-	dist->dot_light = malloc(sizeof(t_vector));  // Для хранения направления на источник света
-	dist->near_obj = 0;  // Изначально нет ближайшего объекта
-	dist->n_obj = NULL;  // Изначально нет объекта
+	t_list		*node;
+	t_figure	*figure;
+
+	dist->dot_light = malloc(sizeof(t_vector));
+	dist->near_obj = 0;
+	dist->n_obj = NULL;
 	dist->min_dist = FLT_MAX;
-	t_list *node = objects;  // Устанавливаем максимально возможное расстояние
+	node = objects;
 	while (node)
 	{
-		t_figure *figure = (t_figure *)node->content;
+		figure = (t_figure *)node->content;
 		if (figure->type == SPHERE)
-			dist->dist = sphere_intersect(camera, ray, figure);  // Пересечение с шаром
+			dist->dist = sphere_intersect(camera, ray, figure);
 		else if (figure->type == PLANE)
-			dist->dist = plane_intersect(camera, ray, figure);  // Пересечение с плоскостью
+			dist->dist = plane_intersect(camera, ray, figure);
 		else if (figure->type == CYLINDER)
-			dist->dist = cylinder_intersect(camera, ray, figure);  // Пересечение с цилиндром
-        // Если пересечение найдено и оно ближе, чем ранее найденное минимальное, обновляем
+			dist->dist = cylinder_intersect(camera, ray, figure);
 		if (dist->dist > EPSILON && dist->dist < dist->min_dist)
 		{
 			dist->min_dist = dist->dist;
-			dist->near_obj = figure->type;  // Запоминаем тип ближайшей фигуры
-			dist->n_obj = figure;  // Запоминаем указатель на ближайшую фигуру
+			dist->near_obj = figure->type;
+			dist->n_obj = figure;
 		}
 		node = node->next;
 	}
 }
 
-t_figure	*find_closest_figure(t_list *list, t_camera *camera, t_vector *ray, float *closest_t)
+t_figure	*find_closest_figure(t_list *list, t_camera *camera, \
+									t_vector *ray, float *closest_t)
 {
-	t_dist dist;  // Структура для нахождения ближайшего объекта
+	t_dist	dist;
 
-	*closest_t = FLT_MAX;  // Изначально нет ближайшего объекта
-    // Инициализация и поиск ближайшего объекта
+	*closest_t = FLT_MAX;
 	dist_init(&dist, camera, ray, list);
-    // Если нашли ближайший объект, возвращаем его
 	if (dist.n_obj != NULL)
 	{
 		*closest_t = dist.min_dist;
-		return dist.n_obj;  // Возвращаем ближайшую фигуру
+		return (dist.n_obj);
 	}
-	return (NULL);  // Если фигуры нет, возвращаем NULL
+	return (NULL);
 }
 
 void	ray_tracing(void *mlx, void *window, t_data *d)
