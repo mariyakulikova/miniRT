@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 15:46:48 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:37:04 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,19 @@ t_figure	*find_closest_figure(t_list *list, t_vector *camera, t_vector *ray, flo
 	return (NULL);  // Если фигуры нет, возвращаем NULL
 }
 
-bool is_shadowed(t_ray_tracing_params	*params, t_data *d, t_vector *p)
+bool is_shadowed(t_data *d, t_vector *p)
 {
 	t_figure	*f;
 	t_vector	*l_ray;
 	float		distance;
+	float		closest_t;
 
 	l_ray = vec_sub(d->scene->light->coord, p);
 	distance = vec_len(l_ray);
 	vec_norm(l_ray);
-	f = find_closest_figure(d->scene->fugures, p, l_ray, &params->closest_t);
-	// if (f == NULL)
-	// 	return (false);
-	if (f && params->closest_t < distance)
+	f = find_closest_figure(d->scene->fugures, p, l_ray, &closest_t);
+	free(l_ray);
+	if (f && closest_t < distance)
 		return (true);
 	return (false);
 }
@@ -103,6 +103,9 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 {
 	t_ray_tracing_params	params;
 	int						color;
+	t_vector				*p;
+	t_vector				*corrected_p;
+	bool					is_shadow;
 
 	params.vplane = get_view_port(d->scene->width, d->scene->hight, d->scene->camera->fov);
 	params.mlx_y = 0;
@@ -120,8 +123,10 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera->origin, params.ray, &params.closest_t);
 			if (params.closest_t < FLT_MAX)
 			{
-				p = get_p_point(d->scene->camera->origin, params.ray, params.closest_t, d); // Вычисляешь точку пересечения
-				is_shadow = is_shadowed(&params, d, p);
+				p = get_p_point(d->scene->camera->origin, params.ray, params.closest_t, d);
+				t_vector *f_normal = get_normal(params.closest_figure, p, d);
+				corrected_p = vec_add(p, vec_by_scaler(f_normal, 0.001f));
+				is_shadow = is_shadowed(d, corrected_p);
 				color = get_figure_color(is_shadow, params.closest_figure, p, d);// Получаем цвет фигуры
 			// Я так понимаю, что тень должна считаться где-то в этом месте и если тень есть, то ты меняешь color
 			/*
@@ -133,14 +138,7 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 			*/
 			}
 			else
-			{
-				// 	color = 8421376;
 				color = 16777215;  // Цвет фона 16776960
-				// is_shadow = is_shadowed(&params, d, p);
-				// if (is_shadow)
-				// 	color = 8421376;
-			}
-			// printf("is_shadow = %d\n", is_shadow);
 			mlx_pixel_put(mlx, window, params.mlx_x, params.mlx_y, color);  // Рисуем пиксель
 			free(params.ray);  // Освобождаем память
 			params.x_angle++;

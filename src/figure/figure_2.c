@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 15:47:34 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:40:18 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_vector	*calculate_cylinder_normal(t_figure *f, t_vector *p)
 	return (normal);
 }
 
-static t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d)
+t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d)
 {
 	t_vector	*normal;
 

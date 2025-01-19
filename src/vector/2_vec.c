@@ -6,11 +6,24 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:33:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/07 16:41:12 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:18:45 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+t_vector	*new_vec(float x, float y, float z)
+{
+	t_vector	*vector;
+
+	vector = malloc(sizeof(t_vector));
+	if (!vector)
+		return (NULL);
+	vector->x = x;
+	vector->y = y;
+	vector->z = z;
+	return (vector);
+}
 
 t_vector	*get_vec(char *str, bool need_check)
 {
@@ -36,4 +49,9 @@ t_vector	*get_vec(char *str, bool need_check)
 			return (NULL);
 	}
 	return (new_vec(x, y, z));
+}
+
+t_vector	*vec_by_scaler(t_vector *v, float scaler)
+{
+	return (new_vec(v->x * scaler, v->y * scaler, v->z * scaler));
 }

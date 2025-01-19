@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:36:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 14:15:30 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:39:58 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ float		plane_intersect(t_vector *camera, t_vector *ray, t_figure *plane);
 float		cylinder_intersect(t_vector *camera, t_vector *ray, t_figure *plane);
 int			get_figure_color(bool is_shadow, t_figure *figure, t_vector *p, t_data *d);
 t_vector	*get_p_point(t_vector *camera, t_vector *ray, float t, t_data *d);
+t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d);
 
 #endif
