@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 13:12:41 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/20 15:01:30 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,10 @@ float	cylinder_intersect(t_vector *camera, t_vector *ray, t_figure *cylinder)
 		d_min = dist_disc[1];
 	// Если пересечение найдено, возвращаем расстояние до него
 	if (d_min < FLT_MAX)
+	{
+		free(plane_top.coord);
 		return (d_min);
+	}
+	free(plane_top.coord);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:42:48 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/16 11:53:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:37:10 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ t_figure	*get_plane(t_ftype type, char **s)
 	}
 	return (new_figure((t_figure){type, nv3d, coord, color, NULL, NULL, 0, 0}));
 }
-float plane_intersect(t_vector *camera, t_vector *ray, t_figure *plane)
+
+float	plane_intersect(t_vector *camera, t_vector *ray, t_figure *plane)
 {
 	t_vector	*camera_to_plane;
 	float		normal_dot_ray;
@@ -49,9 +50,11 @@ float plane_intersect(t_vector *camera, t_vector *ray, t_figure *plane)
 	{
 		normal_dot_dist = vec_dot_prod(camera_to_plane, plane->norm_v3d);
 		distance = normal_dot_dist / normal_dot_ray;
+		free(camera_to_plane);
 		if (distance < 0)
 			return (0);
 		return (distance);
 	}
-	return 0;
+	free(camera_to_plane);
+	return (0);
 }

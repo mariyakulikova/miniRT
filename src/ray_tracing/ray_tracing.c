@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 12:14:36 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:45:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ t_figure	*find_closest_figure(t_list *list, t_vector *camera, t_vector *ray, flo
 	if (dist.n_obj != NULL)
 	{
 		*closest_t = dist.min_dist;
+		free(dist.dot_light);
 		return dist.n_obj;  // Возвращаем ближайшую фигуру
 	}
+	free(dist.dot_light);
 	return (NULL);  // Если фигуры нет, возвращаем NULL
 }
 
