@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   plane.c											:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: alvutina <alvutina@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/11/27 20:42:48 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2025/01/14 11:19:18 by alvutina		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   plane.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 20:42:48 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/20 17:08:36 by mkulikov         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -37,7 +37,7 @@ t_figure	*get_plane(t_ftype type, char **s)
 	return (new_figure((t_figure){type, nv3d, coord, color, NULL, NULL, 0, 0}));
 }
 
-float	plane_intersect(t_camera *camera, t_vector *ray, t_figure *plane)
+float	plane_intersect(t_vector *camera, t_vector *ray, t_figure *plane)
 {
 	t_vector	*camera_to_plane;
 	float		normal_dot_ray;
@@ -45,14 +45,16 @@ float	plane_intersect(t_camera *camera, t_vector *ray, t_figure *plane)
 	float		distance;
 
 	normal_dot_ray = vec_dot_prod(plane->norm_v3d, ray);
-	camera_to_plane = vec_sub(plane->coord, camera->origin);
+	camera_to_plane = vec_sub(plane->coord, camera);
 	if (normal_dot_ray != 0)
 	{
 		normal_dot_dist = vec_dot_prod(camera_to_plane, plane->norm_v3d);
 		distance = normal_dot_dist / normal_dot_ray;
+		free(camera_to_plane);
 		if (distance < 0)
 			return (0);
 		return (distance);
 	}
+	free(camera_to_plane);
 	return (0);
 }

@@ -1,17 +1,16 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   sphere.c										   :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mkulikov <mkulikov@student.42berlin.de>	+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/10/21 11:40:53 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2024/12/28 21:08:13 by mkulikov		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sphere.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/20 17:07:10 by mkulikov         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
 
 t_figure	*get_sphere(t_ftype type, char **s)
 {
@@ -33,13 +32,12 @@ t_figure	*get_sphere(t_ftype type, char **s)
 }
 
 // Функция вычисления пересечения с сферой
-float	sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
+float sphere_intersect(t_vector *camera, t_vector *ray, t_figure *sphere)
 {
 	t_sphere_intersect	si;
 	t_vector			*camera_sphere;
 
-
-	camera_sphere = vec_sub(camera->origin, sphere->coord);
+	camera_sphere = vec_sub(camera, sphere->coord);
 	si.dist_squared = vec_dot_prod(camera_sphere, camera_sphere);
 	si.radius_squared = powf(sphere->diameter / 2.0f, 2.0f);
 	if (si.dist_squared < si.radius_squared)

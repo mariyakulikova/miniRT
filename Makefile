@@ -9,6 +9,7 @@ CFILE = color/1_color \
 		figure/cylinder \
 		figure/figure_1 \
 		figure/figure_2 \
+		figure/figure_3 \
 		figure/plane \
 		figure/sphere \
 		parsing/parsing \

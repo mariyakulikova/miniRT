@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   cylinder.c										 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: alvutina <alvutina@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/11/27 20:32:36 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2025/01/14 11:20:27 by alvutina		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/20 17:12:35 by mkulikov         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -137,6 +137,10 @@ float	cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder)
 	if (dist_disc[1] > 0 && dist_disc[1] < d_min)
 		d_min = dist_disc[1];
 	if (d_min < FLT_MAX)
+	{
+		free(plane_top.coord);
 		return (d_min);
+	}
+	free(plane_top.coord);
 	return (0);
 }

@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   parsing.c										  :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: alvutina <alvutina@student.42.fr>		  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/11/20 16:33:57 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2025/01/14 12:52:30 by alvutina		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/20 17:03:56 by mkulikov         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -23,7 +23,7 @@ static void	check_empty_file(char *file)
 		print_error(-1, "Empty file\n", NULL);
 	free(line);
 }
-// TODO redo!!!!!!!!!!
+
 static void	parse_scene_features(t_data *data, char **s)
 {
 	if (s[0][0] == 'A')

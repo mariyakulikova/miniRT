@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   ray_tracing.c									  :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: cmarguer <marvin@42.fr>					+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/10/21 12:14:03 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2025/01/17 15:36:34 by cmarguer		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_tracing.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/20 17:14:40 by mkulikov         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -93,21 +93,11 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 			params.x_ray = params.x_angle * d->scene->vplane->x_pixel;
 			params.ray = new_vec(params.x_ray, params.y_ray, d->scene->camera->direction->z);  // Направление луча
 			vec_norm(params.ray);  // Нормализуем луч
-			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera, params.ray, &params.closest_t);
+			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera->origin, params.ray, &params.closest_t);
 			if (params.closest_t < FLT_MAX)
-			{
-				color = get_figure_color(params.closest_figure, params.ray, params.closest_t, d);// Получаем цвет фигуры
-			// Я так понимаю, что тень должна считаться где-то в этом месте и если тень есть, то ты меняешь color
-			/*
-			1.Вычисляешь точку пересечения с объектом
-			2.Направление от точки пересечения к источнику света + нормализуешь
-			3.Рассчитываешь, есть ли тень на точке пересечения луча, и, если тень есть,
-			она будет определять её цвет, исходя из положения объектов сцены и источника света.
-			4.Если тень есть, то изменяешь цвет
-			*/
-			}
+				color = get_figure_color(params.ray, params.closest_figure, params.closest_t, d);// Получаем цвет фигуры
 			else
-			color = 16777215;  // Цвет фона 16776960
+				color = 16777215;  // Цвет фона 16776960
 			mlx_pixel_put(mlx, window, params.mlx_x, params.mlx_y, color);  // Рисуем пиксель
 			free(params.ray);  // Освобождаем память
 			params.x_angle++;
