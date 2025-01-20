@@ -62,7 +62,7 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 	{
 		ray_dir = calculate_ray_direction(x, y, data);
 		data->m_dist.min_dist = FLT_MAX;
-		dist_init(&data->m_dist, data->scene->camera, \
+		dist_init(&data->m_dist, data->scene->camera->origin, \
 		ray_dir, data->scene->fugures);
 		printf("Selected object type: %d\n", data->m_dist.near_obj);
 		printf("Selected object index: %p\n", (void *)data->m_dist.n_obj);

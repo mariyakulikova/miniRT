@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:14:40 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:24:07 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	preset_ray_tracing(t_data *d)
 	}
 }
 
-void	dist_init(t_dist *dist, t_camera *camera, \
+void	dist_init(t_dist *dist, t_vector *camera, \
 						t_vector *ray, t_list *objects)
 {
 	t_list		*node;
@@ -61,7 +61,7 @@ void	dist_init(t_dist *dist, t_camera *camera, \
 	}
 }
 
-t_figure	*find_closest_figure(t_list *list, t_camera *camera, \
+t_figure	*find_closest_figure(t_list *list, t_vector *camera, \
 									t_vector *ray, float *closest_t)
 {
 	t_dist	dist;
@@ -71,8 +71,10 @@ t_figure	*find_closest_figure(t_list *list, t_camera *camera, \
 	if (dist.n_obj != NULL)
 	{
 		*closest_t = dist.min_dist;
+		free(dist.dot_light);
 		return (dist.n_obj);
 	}
+	free(dist.dot_light);
 	return (NULL);
 }
 

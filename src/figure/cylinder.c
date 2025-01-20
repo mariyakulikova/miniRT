@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:32:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:12:35 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:16:08 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_figure	*get_cylinder(t_ftype type, char **s)
 	return (new_figure((t_figure){type, nv3d, coord, color, NULL, NULL, h, d}));
 }
 
-static float	base_intersect(t_camera *camera, t_vector *ray, \
+static float	base_intersect(t_vector *camera, t_vector *ray, \
 									t_figure *plane, float radius)
 {
 	float		distance;
@@ -52,9 +52,9 @@ static float	base_intersect(t_camera *camera, t_vector *ray, \
 	if (distance > 0)
 	{
 		intersection_point = new_vec(
-				camera->origin->x + ray->x * distance,
-				camera->origin->y + ray->y * distance,
-				camera->origin->z + ray->z * distance);
+				camera->x + ray->x * distance,
+				camera->y + ray->y * distance,
+				camera->z + ray->z * distance);
 		camera_to_point = vec_sub(intersection_point, plane->coord);
 		if (vec_len(camera_to_point) <= radius)
 		{
@@ -68,10 +68,10 @@ static float	base_intersect(t_camera *camera, t_vector *ray, \
 	return (0);
 }
 
-static void	compute_cylinder_intersection(t_camera *camera, t_vector *ray, \
+static void	compute_cylinder_intersection(t_vector *camera, t_vector *ray, \
 							t_figure *cylinder, t_cylinder_intersect *ci)
 {
-	ci->camera_to_cylinder = vec_sub(camera->origin, cylinder->coord);
+	ci->camera_to_cylinder = vec_sub(camera, cylinder->coord);
 	ci->a = vec_dot_prod(ray, ray) - \
 			powf(vec_dot_prod(ray, cylinder->norm_v3d), 2.0f);
 	ci->b = 2 * (vec_dot_prod(ray, ci->camera_to_cylinder) - \
@@ -104,7 +104,7 @@ static void	check_cylinder_intersection(t_vector *ray, t_figure *cylinder, \
 	free(ci->camera_to_cylinder);
 }
 
-static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, \
+static void	lateral_plane_intersect(t_vector *camera, t_vector *ray, \
 			t_figure *cylinder, float *d_min)
 {
 	t_cylinder_intersect	ci;
@@ -113,7 +113,7 @@ static void	lateral_plane_intersect(t_camera *camera, t_vector *ray, \
 	check_cylinder_intersection(ray, cylinder, &ci, d_min);
 }
 
-float	cylinder_intersect(t_camera *camera, t_vector *ray, t_figure *cylinder)
+float	cylinder_intersect(t_vector *camera, t_vector *ray, t_figure *cylinder)
 {
 	float		d_min;
 	float		dist_disc[2];
