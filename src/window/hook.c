@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 15:18:19 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:38:07 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	ft_key_hook_camera(int keycode, t_data *data)
 	if (keycode == XK_a)
 		rotate_y(data->scene->camera->direction, -10.0);
 	if (keycode == XK_e)
-		rotate_y(data->scene->camera->direction, 10.0);
+		rotate_z(data->scene->camera->direction, 10.0);
 	if (keycode == XK_f)
-		rotate_y(data->scene->camera->direction, -10.0);
+		rotate_z(data->scene->camera->direction, -10.0);
 }
 
 static void	ft_key_hook_objects(int keycode, t_data *data)
