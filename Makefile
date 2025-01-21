@@ -27,6 +27,7 @@ CFILE = color/1_color \
 		window/hook \
 		window/hook1 \
 		window/hook2 \
+		window/hook3 \
 		window/win \
 		main
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))

@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:52:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:52:25 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:09:15 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ typedef struct s_data
 	t_window	*win;
 	t_scene		*scene;
 	t_dist		m_dist;
+	t_figure	*selected_object;
 }	t_data;
 
 #endif

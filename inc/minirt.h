@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:50:34 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:50:41 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:40:09 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@
 # include "parsing.h"
 # include "hook1.h"
 # include "hook2.h"
+# include "hook3.h"
 
 #endif
