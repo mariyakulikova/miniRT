@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:07:10 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:06:25 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ t_figure	*get_sphere(t_ftype type, char **s)
 	return (new_figure((t_figure){type, NULL, coord, color, NULL, NULL, d, d}));
 }
 
-// Функция вычисления пересечения с сферой
-float sphere_intersect(t_vector *camera, t_vector *ray, t_figure *sphere)
+float	sphere_intersect(t_vector *camera, t_vector *ray, t_figure *sphere)
 {
 	t_sphere_intersect	si;
 	t_vector			*camera_sphere;

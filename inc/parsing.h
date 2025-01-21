@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:51:29 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:51:32 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:09:47 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define PARSING_H
 
 void	read_file(char *file, t_data *data);
+void	read_lines(int fd, t_data *data);
 
 #endif

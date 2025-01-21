@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:03:56 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 11:17:10 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,23 +98,22 @@ static void	parse_line(char *line, t_data *data)
 	ft_free_split(s);
 }
 
-void	read_file(char *file, t_data *data)
+void	read_lines(int fd, t_data *data)
 {
-	int		fd;
 	int		len;
 	char	*line;
 
-	check_empty_file(file);
-	fd = open_file(file);
-	data->scene = new_scene(WIDTH, HIGHT);
-	if (!data->scene)
-		print_error(-1, "malloc", data);
 	while (true)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			break ;
 		len = ft_strlen(line);
 		if (len == 0)
+		{
+			free(line);
 			break ;
+		}
 		if (len && (line[0] == '\n'))
 		{
 			free(line);
@@ -124,6 +123,17 @@ void	read_file(char *file, t_data *data)
 		parse_line(line, data);
 		free(line);
 	}
-	free(line);
+}
+
+void	read_file(char *file, t_data *data)
+{
+	int	fd;
+
+	check_empty_file(file);
+	fd = open_file(file);
+	data->scene = new_scene(WIDTH, HIGHT);
+	if (!data->scene)
+		print_error(-1, "malloc", data);
+	read_lines(fd, data);
 	close(fd);
 }
