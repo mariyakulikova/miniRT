@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:52:31 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:52:33 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:26:05 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
-# include <X11/keysym.h>
-# include <X11/X.h>
-# include "../minilibx-linux/mlx.h"
+// # include <X11/keysym.h>
+// # include <X11/X.h>
+// # include "../minilibx-linux/mlx.h"
 
 # define HIGHT 900
 # define WIDTH 1200

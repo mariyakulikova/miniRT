@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 12:43:10 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:44:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include "../minilibx-linux/mlx.h"
+
 
 static void	ft_key_hook_camera(int keycode, t_data *data)
 {
@@ -26,15 +30,20 @@ static void	ft_key_hook_camera(int keycode, t_data *data)
 
 static void	ft_key_hook_objects(int keycode, t_data *data)
 {
-	if (data->selected_object)
+	if (data->selected_object && data->selected_object->type)
 	{
+
 		if (keycode == XK_i || keycode == XK_k || \
 			keycode == XK_j || keycode == XK_l)
 			ft_translate_hook(keycode, data);
-		if (keycode == XK_r || keycode == XK_t || keycode == XK_y)
+		else if (keycode == XK_r || keycode == XK_t || keycode == XK_y)
 			ft_rotate_hook(keycode, data);
-		if (keycode == 0xffb0 || keycode == 0xffb1)
+		else if (keycode == XK_KP_Add || keycode == XK_KP_F1)
+		{
+			printf("Hi from hook obj!\n Selected object type: %d\n", data->selected_object->type);
 			ft_resize_hook(keycode, data);
+
+		}
 	}
 	else
 		printf("No object selected to manipulate.\n");
@@ -52,10 +61,10 @@ int	key_hook(int keycode, t_data *data)
 		data->scene->camera->origin->x += 0.1;
 	if (keycode == XK_Left)
 		data->scene->camera->origin->x -= 0.1;
-	if (keycode == 0xffab) //+
-		data->scene->camera->origin->z -= 1;
-	if (keycode == 0xffad) //-
-		data->scene->camera->origin->z += 1;
+	// if (keycode == 0xffab) //+
+	// 	data->scene->camera->origin->z -= 1;
+	// if (keycode == 0xffad) //-
+	// 	data->scene->camera->origin->z += 1;
 	ft_key_hook_camera(keycode, data);
 	ft_key_hook_objects(keycode, data);
 	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
@@ -77,6 +86,7 @@ int	mouse_hook(int button, int x, int y, t_data *data)
             data->selected_object = data->m_dist.n_obj; // Save selected object
             printf("Selected object type: %d\n", data->m_dist.near_obj);
             printf("Selected object address: %p\n", (void *)data->selected_object);
+			// ft_key_hook_objects(button, data);
         }
         else
         {

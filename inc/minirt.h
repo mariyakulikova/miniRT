@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:50:34 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 11:40:09 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:26:14 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <errno.h>
 # include <stdbool.h>
 # include <float.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include "../minilibx-linux/mlx.h"
 # define M_PI 3.14159265358979323846
 # define EPSILON FLT_EPSILON
 # include "../libft/libft.h"

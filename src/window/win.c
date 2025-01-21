@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:52 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:56:54 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 14:50:40 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	start_mlx(t_data *data)
 									&data->win->img.bpp, \
 									&data->win->img.line_len, \
 									&data->win->img.endian);
-	mlx_key_hook(data->win->win_ptr, key_hook, data);
 	mlx_mouse_hook(data->win->win_ptr, mouse_hook, data);
+	// mlx_hook(data->win->win_ptr, MotionNotify, PointerMotionHintMask, mouse_hook, data);
+	mlx_hook(data->win->win_ptr, KeyPress, KeyPressMask, key_hook, data);
 	mlx_hook(data->win->win_ptr, DestroyNotify, 0, close_window, data);
 }
 
