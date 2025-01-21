@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:43 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:56:44 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:13:15 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_translate_hook(int keycode, t_data *data)
 		handle_translation(keycode, data->m_dist.n_obj->coord, tx, ty);
 	else if (data->m_dist.near_obj == CYLINDER)
 		handle_translation(keycode, data->m_dist.n_obj->coord, tx, ty);
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:47 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:56:48 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:13:25 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int	ft_rotate_hook(int keycode, t_data *data)
 		handle_rotation(keycode, data->m_dist.n_obj->coord, angle);
 	else if (data->m_dist.near_obj == CYLINDER)
 		handle_rotation(keycode, data->m_dist.n_obj->coord, angle);
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	return (0);
 }

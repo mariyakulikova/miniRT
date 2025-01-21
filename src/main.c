@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:57:00 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 14:14:19 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:07:08 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	read_file(*(argv + 1), data);
 	start_mlx(data);
 	preset_ray_tracing(data);
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	mlx_loop(data->win->mlx_ptr);
 	return (0);
 }

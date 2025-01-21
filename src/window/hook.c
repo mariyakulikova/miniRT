@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 15:14:57 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:18:19 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	key_hook(int keycode, t_data *data)
 		data->scene->camera->origin->z += 0.1;
 	ft_key_hook_camera(keycode, data);
 	ft_key_hook_objects(keycode, data);
-	ray_tracing(data->win->mlx_ptr, data->win->win_ptr, data);
+	ray_tracing(data);
 	return (0);
 }
 

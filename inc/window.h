@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:52:31 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 14:26:05 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:04:26 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int		key_hook(int keysym, t_data *data);
 void	start_mlx(t_data *data);
 int		close_window(t_data *data);
 int		mouse_hook(int button, int x, int y, t_data *data);
+void	my_pixel_put(t_img *img, int x, int y, int color);
 
 #endif

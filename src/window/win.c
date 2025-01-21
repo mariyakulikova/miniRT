@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:52 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 14:57:39 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:19:24 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+void	my_pixel_put(t_img *img, int x, int y, int color)
+{
+	int	offset;
+
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HIGHT)
+		return ;
+	offset = (img->line_len * y) + (x * (img->bpp / 8));
+	*((unsigned int *)(img->addr + offset)) = color;
+}
 
 void	start_mlx(t_data *data)
 {

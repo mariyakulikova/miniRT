@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 10:49:16 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:12:17 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ t_figure	*find_closest_figure(t_list *list, t_vector *camera, \
 	return (NULL);
 }
 
-void	trace_pixel(void *mlx, void *window, t_data *d, \
-								t_ray_tracing_params *params)
+void	trace_pixel(t_data *d, t_ray_tracing_params *params)
 {
 	int	color;
 
@@ -94,11 +93,12 @@ void	trace_pixel(void *mlx, void *window, t_data *d, \
 							params->closest_t, d);
 	else
 		color = 16777215;
-	mlx_pixel_put(mlx, window, params->mlx_x, params->mlx_y, color);
+	my_pixel_put(&d->win->img, params->mlx_x, params->mlx_y, color);
+	// mlx_pixel_put(mlx, window, params->mlx_x, params->mlx_y, color);
 	free(params->ray);
 }
 
-void	ray_tracing(void *mlx, void *window, t_data *d)
+void	ray_tracing(t_data *d)
 {
 	t_ray_tracing_params	params;
 
@@ -115,11 +115,15 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 		while (params.x_angle < (d->scene->width / 2) + \
 			(d->scene->camera->direction->x * d->scene->hight / 2.0f))
 		{
-			trace_pixel(mlx, window, d, &params);
+			trace_pixel(d, &params);
 			params.x_angle++;
 			params.mlx_x++;
 		}
 		params.y_angle--;
 		params.mlx_y++;
 	}
+	mlx_put_image_to_window(d->win->mlx_ptr, \
+							d->win->win_ptr, \
+							d->win->img.ptr, \
+							0, 0);
 }
