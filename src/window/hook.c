@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   hook.c											 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: cmarguer <marvin@42.fr>					+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/10/18 12:47:38 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2025/01/17 15:32:53 by cmarguer		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/21 10:56:35 by alvutina         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
@@ -26,7 +26,8 @@ static void	ft_key_hook_camera(int keycode, t_data *data)
 
 static void	ft_key_hook_objects(int keycode, t_data *data)
 {
-	if (keycode == XK_i || keycode == XK_k || keycode == XK_j || keycode == XK_l)
+	if (keycode == XK_i || keycode == XK_k || \
+		keycode == XK_j || keycode == XK_l)
 		ft_translate_hook(keycode, data);
 	if (keycode == XK_r || keycode == XK_t || keycode == XK_y)
 		ft_rotate_hook(keycode, data);

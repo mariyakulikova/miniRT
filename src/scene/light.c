@@ -1,18 +1,19 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   light.c											:+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: mkulikov <mkulikov@student.42berlin.de>	+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/11/27 17:54:44 by mkulikov		  #+#	#+#			 */
-/*   Updated: 2024/12/28 13:33:13 by mkulikov		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   light.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/21 10:54:50 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/21 10:55:27 by alvutina         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_light	*new_light(t_vector *vector, float ratio, t_color *color,  t_color *l_color)
+static t_light	*new_light(t_vector *vector, float ratio, \
+							t_color *color, t_color *l_color)
 {
 	t_light	*l;
 

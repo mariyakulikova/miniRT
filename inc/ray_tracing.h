@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:41:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:14:23 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:46:16 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ typedef struct s_ray_tracing_params {
 	t_vport		*vplane;
 }	t_ray_tracing_params;
 
-void	ray_tracing(void *mlx, void *window, t_data *d);
-void	preset_ray_tracing(t_data *d);
-t_figure *find_closest_figure(t_list *list, t_vector *camera, t_vector *ray, float *closest_t);
-void	dist_init(t_dist *dist, t_vector *camera, t_vector *ray, t_list *objects);
+void		ray_tracing(void *mlx, void *window, t_data *d);
+void		preset_ray_tracing(t_data *d);
+t_figure	*find_closest_figure(t_list *list, t_vector *camera, \
+				t_vector *ray, float *closest_t);
+void		dist_init(t_dist *dist, t_vector *camera, \
+				t_vector *ray, t_list *objects);
+void		trace_pixel(void *mlx, void *window, t_data *d, \
+								t_ray_tracing_params *params);
+
 #endif

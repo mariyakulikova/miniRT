@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:24:07 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:49:16 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,44 @@ t_figure	*find_closest_figure(t_list *list, t_vector *camera, \
 	return (NULL);
 }
 
+void	trace_pixel(void *mlx, void *window, t_data *d, \
+								t_ray_tracing_params *params)
+{
+	int	color;
+
+	params->x_ray = params->x_angle * d->scene->vplane->x_pixel;
+	params->ray = new_vec(params->x_ray, params->y_ray, \
+	d->scene->camera->direction->z);
+	vec_norm(params->ray);
+	params->closest_figure = find_closest_figure(d->scene->fugures, \
+		d->scene->camera->origin, params->ray, &params->closest_t);
+	if (params->closest_t < FLT_MAX)
+		color = get_figure_color(params->ray, params->closest_figure, \
+							params->closest_t, d);
+	else
+		color = 16777215;
+	mlx_pixel_put(mlx, window, params->mlx_x, params->mlx_y, color);
+	free(params->ray);
+}
+
 void	ray_tracing(void *mlx, void *window, t_data *d)
 {
 	t_ray_tracing_params	params;
-	int						color;
 
 	params.mlx_y = 0;
-	params.y_angle = (d->scene->hight / 2) + (d->scene->camera->direction->y * d->scene->hight / 2.0f);
-	while (params.y_angle > ((d->scene->hight / 2) * (-1) + (d->scene->camera->direction->y * d->scene->hight / 2.0f)))
+	params.y_angle = (d->scene->hight / 2) + \
+		(d->scene->camera->direction->y * d->scene->hight / 2.0f);
+	while (params.y_angle > ((d->scene->hight / 2) * (-1) + \
+		(d->scene->camera->direction->y * d->scene->hight / 2.0f)))
 	{
 		params.y_ray = params.y_angle * d->scene->vplane->y_pixel;
-		params.x_angle = (d->scene->width / 2) * (-1) + (d->scene->camera->direction->x * d->scene->hight / 2.0f);
+		params.x_angle = (d->scene->width / 2) * (-1) + \
+			(d->scene->camera->direction->x * d->scene->hight / 2.0f);
 		params.mlx_x = 0;
-		while (params.x_angle < (d->scene->width / 2) + (d->scene->camera->direction->x * d->scene->hight / 2.0f))
+		while (params.x_angle < (d->scene->width / 2) + \
+			(d->scene->camera->direction->x * d->scene->hight / 2.0f))
 		{
-			params.x_ray = params.x_angle * d->scene->vplane->x_pixel;
-			params.ray = new_vec(params.x_ray, params.y_ray, d->scene->camera->direction->z);  // Направление луча
-			vec_norm(params.ray);  // Нормализуем луч
-			params.closest_figure = find_closest_figure(d->scene->fugures, d->scene->camera->origin, params.ray, &params.closest_t);
-			if (params.closest_t < FLT_MAX)
-				color = get_figure_color(params.ray, params.closest_figure, params.closest_t, d);// Получаем цвет фигуры
-			else
-				color = 16777215;  // Цвет фона 16776960
-			mlx_pixel_put(mlx, window, params.mlx_x, params.mlx_y, color);  // Рисуем пиксель
-			free(params.ray);  // Освобождаем память
+			trace_pixel(mlx, window, d, &params);
 			params.x_angle++;
 			params.mlx_x++;
 		}
@@ -109,5 +123,3 @@ void	ray_tracing(void *mlx, void *window, t_data *d)
 		params.mlx_y++;
 	}
 }
-
-
