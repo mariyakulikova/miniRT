@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 11:06:25 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:25:34 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ float	sphere_intersect(t_vector *camera, t_vector *ray, t_figure *sphere)
 		return (si.dist_1);
 	return (0);
 }
-

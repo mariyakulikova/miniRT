@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_vec.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 10:54:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 17:02:53 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:32:54 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ float	vec_dot_prod(t_vector *v1, t_vector *v2)
 {
 	return ((v1->x * v2->x) + (v1->y * v2->y) + (v1->z * v2->z));
 }
-

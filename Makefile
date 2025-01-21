@@ -13,6 +13,7 @@ CFILE = color/1_color \
 		figure/plane \
 		figure/sphere \
 		parsing/parsing \
+		parsing/parsing1 \
 		ray_tracing/ray_tracing \
 		ray_tracing/view_port \
 		scene/a_light \
@@ -29,6 +30,7 @@ CFILE = color/1_color \
 		window/hook2 \
 		window/hook3 \
 		window/win \
+		figure/cylinder1 \
 		main
 SRCS = $(addprefix src/, $(addsuffix .c, $(CFILE)))
 OBJS_DIR = obj/

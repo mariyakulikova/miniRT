@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:36:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 11:04:53 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:13:38 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int			get_figure_color(t_vector *ray, t_figure *f, float t, t_data *d);
 t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d);
 float		cylinder_base_intersect(t_vector *camera, t_vector *ray, \
 									t_figure *cylinder, float *d_min);
+float		base_intersect(t_vector *camera, t_vector *ray, \
+									t_figure *plane, float radius);
 
 #endif

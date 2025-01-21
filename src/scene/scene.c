@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:55:34 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:55:39 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:32:41 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ t_scene	*new_scene(int w, int h)
 	scene->hight = h;
 	return (scene);
 }
-

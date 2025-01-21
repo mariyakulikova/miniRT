@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:52:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 12:09:15 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:35:26 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,11 @@ typedef struct s_scene
 
 typedef struct s_dist
 {
-	float			min_dist;	   // Минимальное расстояние до ближайшей фигуры
-	float			dist;		   // Текущее расстояние до фигуры при проверке пересечения
-	int				near_obj;	   // Тип ближайшего объекта (для диагностики)
-	t_figure		*n_obj;		  // Индекс/ссылка на ближайший объект
-	t_vector		*dot_light;	 // Вектор от точки пересечения до источника света
+	float			min_dist;
+	float			dist;
+	int				near_obj;
+	t_figure		*n_obj;
+	t_vector		*dot_light;
 }	t_dist;
 
 typedef struct s_img
@@ -139,7 +139,8 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct s_window {
+typedef struct s_window
+{
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;

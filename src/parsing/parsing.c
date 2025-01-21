@@ -6,23 +6,11 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 11:17:10 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:11:23 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-static void	check_empty_file(char *file)
-{
-	int		fd;
-	char	*line;
-
-	fd = open_file(file);
-	line = get_next_line(fd);
-	if (!*line)
-		print_error(-1, "Empty file\n", NULL);
-	free(line);
-}
 
 static void	parse_scene_features(t_data *data, char **s)
 {
@@ -123,17 +111,4 @@ void	read_lines(int fd, t_data *data)
 		parse_line(line, data);
 		free(line);
 	}
-}
-
-void	read_file(char *file, t_data *data)
-{
-	int	fd;
-
-	check_empty_file(file);
-	fd = open_file(file);
-	data->scene = new_scene(WIDTH, HIGHT);
-	if (!data->scene)
-		print_error(-1, "malloc", data);
-	read_lines(fd, data);
-	close(fd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:47 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 15:13:25 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:18:48 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,37 @@ void	rotate_x(t_vector *v, float angle)
 	float	y;
 	float	z;
 
-	printf("Rotating vector around X axis by %f degrees\n", angle);
 	rad = angle * M_PI / 180.0;
 	y = v->y * cos(rad) - v->z * sin(rad);
 	z = v->y * sin(rad) + v->z * cos(rad);
 	v->y = y;
 	v->z = z;
-	printf("New vector position: (%f, %f, %f)\n", v->x, v->y, v->z);
 }
 
-// Function to rotate a vector around the Y axis
 void	rotate_y(t_vector *v, float angle)
 {
 	float	rad;
 	float	x;
 	float	z;
 
-	printf("Rotating vector around Y axis by %f degrees\n", angle);
 	rad = angle * M_PI / 180.0;
 	x = v->x * cos(rad) + v->z * sin(rad);
 	z = -v->x * sin(rad) + v->z * cos(rad);
 	v->x = x;
 	v->z = z;
-	printf("New vector position: (%f, %f, %f)\n", v->x, v->y, v->z);
 }
 
-// Function to rotate a vector around the Z axis
 void	rotate_z(t_vector *v, float angle)
 {
 	float	rad;
 	float	x;
 	float	y;
 
-	printf("Rotating vector around Z axis by %f degrees\n", angle);
 	rad = angle * M_PI / 180.0;
 	x = v->x * cos(rad) - v->y * sin(rad);
 	y = v->x * sin(rad) + v->y * cos(rad);
 	v->x = x;
 	v->y = y;
-	printf("New vector position: (%f, %f, %f)\n", v->x, v->y, v->z);
 }
 
 static void	handle_rotation(int keycode, t_vector *norm_v3d, float angle)
@@ -73,8 +65,7 @@ int	ft_rotate_hook(int keycode, t_data *data)
 {
 	float	angle;
 
-	printf("Rotate hook called with keycode: %d\n", keycode);
-	angle = 10.0;
+	angle = 30.0;
 	if (data->m_dist.near_obj == SPHERE)
 		handle_rotation(keycode, data->m_dist.n_obj->coord, angle);
 	else if (data->m_dist.near_obj == PLANE)

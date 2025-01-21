@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:10 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:56:13 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:32:48 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,3 @@ void	ultimate_free(t_data *data)
 	}
 	free(data);
 }
-

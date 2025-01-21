@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 10:53:41 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:25:26 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ t_vector	*get_normal(t_figure *f, t_vector *p, t_data *d)
 	vec_norm(normal);
 	return (normal);
 }
-

@@ -3,22 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:52:31 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 15:04:26 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:36:47 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_H
 # define WINDOW_H
-// # include <X11/keysym.h>
-// # include <X11/X.h>
-// # include "../minilibx-linux/mlx.h"
-
 # define HIGHT 900
 # define WIDTH 1200
-# define WIN_CEF 0.95 //ne poniatno
+# define WIN_CEF 0.95
 # define TITLE "data"
 
 int		key_hook(int keysym, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:53:29 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:53:35 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:25:04 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,3 @@ t_figure	*new_figure(t_figure args)
 	figure->diameter = args.diameter;
 	return (figure);
 }
-
-

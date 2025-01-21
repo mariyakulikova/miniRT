@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 14:41:17 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 15:10:22 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:14:13 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAY_TRACING_H
 # define RAY_TRACING_H
 
-typedef struct s_ray_tracing_params {
+typedef struct s_ray_tracing_params
+{
 	int			mlx_x;
 	int			mlx_y;
 	float		x_angle;

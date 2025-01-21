@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 15:12:17 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:01:45 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	trace_pixel(t_data *d, t_ray_tracing_params *params)
 	else
 		color = 16777215;
 	my_pixel_put(&d->win->img, params->mlx_x, params->mlx_y, color);
-	// mlx_pixel_put(mlx, window, params->mlx_x, params->mlx_y, color);
 	free(params->ray);
 }
 
@@ -122,8 +121,6 @@ void	ray_tracing(t_data *d)
 		params.y_angle--;
 		params.mlx_y++;
 	}
-	mlx_put_image_to_window(d->win->mlx_ptr, \
-							d->win->win_ptr, \
-							d->win->img.ptr, \
-							0, 0);
+	mlx_put_image_to_window(d->win->mlx_ptr, d->win->win_ptr, \
+							d->win->img.ptr, 0, 0);
 }

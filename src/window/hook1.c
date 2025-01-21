@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:43 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 15:13:15 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:33:07 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 void	translate(t_vector *v, float tx, float ty, float tz)
 {
-	printf("Translating vector by (%f, %f, %f)\n", tx, ty, tz);
 	v->x += tx;
 	v->y += ty;
 	v->z += tz;
-	printf("New vector position: (%f, %f, %f)\n", v->x, v->y, v->z);
 }
 
 static void	handle_translation(int keycode, t_vector *coord, float tx, float ty)
 {
-	if (keycode == XK_i) // Translate up
+	if (keycode == XK_i)
 		translate(coord, 0, ty, 0);
-	if (keycode == XK_k) // Translate down
+	if (keycode == XK_k)
 		translate(coord, 0, -ty, 0);
-	if (keycode == XK_l) // Translate right
+	if (keycode == XK_l)
 		translate(coord, tx, 0, 0);
-	if (keycode == XK_j) // Translate left
+	if (keycode == XK_j)
 		translate(coord, -tx, 0, 0);
 }
 
@@ -38,7 +36,6 @@ int	ft_translate_hook(int keycode, t_data *data)
 	float	tx;
 	float	ty;
 
-	printf("Translate hook called with keycode: %d\n", keycode);
 	tx = 0.1;
 	ty = 0.1;
 	if (data->m_dist.near_obj == SPHERE)
@@ -50,4 +47,3 @@ int	ft_translate_hook(int keycode, t_data *data)
 	ray_tracing(data);
 	return (0);
 }
-

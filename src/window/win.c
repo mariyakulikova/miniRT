@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:52 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 15:19:24 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:33:18 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ int	close_window(t_data *data)
 	ultimate_free(data);
 	exit (0);
 }
-
