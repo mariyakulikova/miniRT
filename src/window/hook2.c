@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:47 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/22 15:08:00 by cmarguer         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:16:01 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,7 @@ void	ft_rotate_hook(int keycode, t_data *data)
 	float	angle;
 
 	angle = 30.0;
-	if (data->m_dist.near_obj == SPHERE)
-		handle_rotation(keycode, data->m_dist.n_obj->coord, \
-			data->m_dist.n_obj->norm_v3d, angle);
-	else if (data->m_dist.near_obj == PLANE)
+	if (data->m_dist.near_obj == PLANE)
 		handle_rotation(keycode, data->m_dist.n_obj->coord, \
 			data->m_dist.n_obj->norm_v3d, angle);
 	else if (data->m_dist.near_obj == CYLINDER)
