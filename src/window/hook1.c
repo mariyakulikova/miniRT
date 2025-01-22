@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:43 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:33:07 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:10:36 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,34 @@ void	translate(t_vector *v, float tx, float ty, float tz)
 	v->z += tz;
 }
 
-static void	handle_translation(int keycode, t_vector *coord, float tx, float ty)
+static void	handle_translation(int keycode, t_vector *coord, \
+									t_translation *trans)
 {
 	if (keycode == XK_i)
-		translate(coord, 0, ty, 0);
+		translate(coord, 0, trans->ty, 0);
 	if (keycode == XK_k)
-		translate(coord, 0, -ty, 0);
+		translate(coord, 0, -trans->ty, 0);
 	if (keycode == XK_l)
-		translate(coord, tx, 0, 0);
+		translate(coord, trans->tx, 0, 0);
 	if (keycode == XK_j)
-		translate(coord, -tx, 0, 0);
+		translate(coord, -trans->tx, 0, 0);
+	if (keycode == XK_u)
+		translate(coord, 0, 0, trans->tz);
+	if (keycode == XK_h)
+		translate(coord, 0, 0, -trans->tz);
 }
 
-int	ft_translate_hook(int keycode, t_data *data)
+void	ft_translate_hook(int keycode, t_data *data)
 {
-	float	tx;
-	float	ty;
+	t_translation	trans;
 
-	tx = 0.1;
-	ty = 0.1;
+	trans.tx = 0.1;
+	trans.ty = 0.1;
+	trans.tz = 0.1;
 	if (data->m_dist.near_obj == SPHERE)
-		handle_translation(keycode, data->m_dist.n_obj->coord, tx, ty);
+		handle_translation(keycode, data->m_dist.n_obj->coord, &trans);
 	else if (data->m_dist.near_obj == PLANE)
-		handle_translation(keycode, data->m_dist.n_obj->coord, tx, ty);
+		handle_translation(keycode, data->m_dist.n_obj->coord, &trans);
 	else if (data->m_dist.near_obj == CYLINDER)
-		handle_translation(keycode, data->m_dist.n_obj->coord, tx, ty);
-	ray_tracing(data);
-	return (0);
+		handle_translation(keycode, data->m_dist.n_obj->coord, &trans);
 }

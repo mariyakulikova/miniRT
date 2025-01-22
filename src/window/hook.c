@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:33:33 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:03:07 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void	ft_key_hook_objects(int keycode, t_data *data)
 	if (data->selected_object && data->selected_object->type)
 	{
 		if (keycode == XK_i || keycode == XK_k || \
-			keycode == XK_j || keycode == XK_l)
+			keycode == XK_j || keycode == XK_l || \
+			keycode == XK_u || keycode == XK_h)
 			ft_translate_hook(keycode, data);
 		else if (keycode == XK_x || keycode == XK_y || keycode == XK_z)
 			ft_rotate_hook(keycode, data);
@@ -56,6 +57,12 @@ static void	ft_key_hook_light(int keycode, t_data *data)
 		data->scene->light->coord->z += 1;
 	if (keycode == XK_c)
 		data->scene->light->coord->z -= 1;
+	if (keycode == XK_KP_7)
+		rotate_x(data->scene->light->coord, 10.0);
+	if (keycode == XK_KP_8)
+		rotate_y(data->scene->light->coord, 10.0);
+	if (keycode == XK_KP_9)
+		rotate_z(data->scene->light->coord, 10.0);
 }
 
 int	key_hook(int keycode, t_data *data)

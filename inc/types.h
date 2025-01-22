@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   types.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:52:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:35:26 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:51:03 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef enum e_ftype
 	PLANE,
 	CYLINDER
 }	t_ftype;
+
+typedef struct s_translation
+{
+	float	tx;
+	float	ty;
+	float	tz;
+}	t_translation;
 
 typedef struct s_cylinder_intersect
 {
