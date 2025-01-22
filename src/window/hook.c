@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/22 12:41:26 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:39:08 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	ft_key_hook_objects(int keycode, t_data *data)
 			ft_translate_hook(keycode, data);
 		else if (keycode == XK_x || keycode == XK_y || keycode == XK_z)
 			ft_rotate_hook(keycode, data);
-		else if (keycode == XK_KP_0 || keycode == XK_KP_1)
+		else if (keycode == XK_1 || keycode == XK_2)
 			ft_resize_hook(keycode, data);
 	}
 }
