@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:53:29 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:25:04 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:55:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ t_figure	*new_figure(t_figure args)
 	figure->color = args.color;
 	figure->hight = args.hight;
 	figure->diameter = args.diameter;
+	figure->l_color = NULL;
+	figure->a_color = NULL;
 	return (figure);
 }

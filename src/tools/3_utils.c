@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:10 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:32:48 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:55:38 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	ultimate_free(t_data *data)
 			free_light(data->scene->light);
 		if (data->scene->a_light)
 			free_a_light(data->scene->a_light);
-		ft_lstclear(&(data->scene->fugures), &free_figure);
+		if (data->scene->fugures)
+			ft_lstclear(&(data->scene->fugures), &free_figure);
 		free(data->scene);
 	}
 	free(data);
