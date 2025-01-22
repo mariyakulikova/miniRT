@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:29:08 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/22 11:32:16 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:31:13 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	check_scene(t_data *d)
 		print_error(-1, "no light\n", d);
 	if (!d->scene->camera)
 		print_error(-1, "no camera\n", d);
-
 }
 
 void	read_file(char *file, t_data *data)

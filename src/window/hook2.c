@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:47 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/22 15:16:01 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:31:01 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static void	handle_rotation(int keycode, t_vector *coord, \
 		rotate_z(coord, angle);
 		rotate_z(norm_v3d, angle);
 	}
-
 }
 
 void	ft_rotate_hook(int keycode, t_data *data)
