@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cmarguer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:47 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:18:48 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:08:00 by cmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,39 @@ void	rotate_z(t_vector *v, float angle)
 	v->y = y;
 }
 
-static void	handle_rotation(int keycode, t_vector *norm_v3d, float angle)
+static void	handle_rotation(int keycode, t_vector *coord, \
+							t_vector *norm_v3d, float angle)
 {
 	if (keycode == XK_x)
+	{
+		rotate_x(coord, angle);
 		rotate_x(norm_v3d, angle);
+	}
 	if (keycode == XK_y)
+	{
+		rotate_y(coord, angle);
 		rotate_y(norm_v3d, angle);
+	}
 	if (keycode == XK_z)
+	{
+		rotate_z(coord, angle);
 		rotate_z(norm_v3d, angle);
+	}
+
 }
 
-int	ft_rotate_hook(int keycode, t_data *data)
+void	ft_rotate_hook(int keycode, t_data *data)
 {
 	float	angle;
 
 	angle = 30.0;
 	if (data->m_dist.near_obj == SPHERE)
-		handle_rotation(keycode, data->m_dist.n_obj->coord, angle);
+		handle_rotation(keycode, data->m_dist.n_obj->coord, \
+			data->m_dist.n_obj->norm_v3d, angle);
 	else if (data->m_dist.near_obj == PLANE)
-		handle_rotation(keycode, data->m_dist.n_obj->coord, angle);
+		handle_rotation(keycode, data->m_dist.n_obj->coord, \
+			data->m_dist.n_obj->norm_v3d, angle);
 	else if (data->m_dist.near_obj == CYLINDER)
-		handle_rotation(keycode, data->m_dist.n_obj->coord, angle);
-	ray_tracing(data);
-	return (0);
+		handle_rotation(keycode, data->m_dist.n_obj->coord, \
+					data->m_dist.n_obj->norm_v3d, angle);
 }
