@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:29:08 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 17:11:37 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:32:16 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ static void	check_empty_file(char *file)
 	free(line);
 }
 
+static void	check_scene(t_data *d)
+{
+	if (!d->scene->a_light)
+		print_error(-1, "no ambient light\n", d);
+	if (!d->scene->light)
+		print_error(-1, "no light\n", d);
+	if (!d->scene->camera)
+		print_error(-1, "no camera\n", d);
+
+}
+
 void	read_file(char *file, t_data *data)
 {
 	int	fd;
@@ -34,5 +45,6 @@ void	read_file(char *file, t_data *data)
 	if (!data->scene)
 		print_error(-1, "malloc", data);
 	read_lines(fd, data);
+	check_scene(data);
 	close(fd);
 }
