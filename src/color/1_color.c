@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_color.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 10:52:55 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:52:58 by alvutina         ###   ########.fr       */
+/*   Created: 2024/11/27 16:38:04 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/22 21:15:44 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,15 @@ t_color	*get_color(char *str)
 	int		b;
 	char	**s;
 
+	str[ft_strlen(str) - 1] = '\0';
 	s = ft_split(str, ',');
 	if (!s)
 		return (NULL);
+	if (ft_split_size(s) != 3)
+	{
+		ft_free_split(s);
+		return (NULL);
+	}
 	r = ft_atoi(s[0]);
 	g = ft_atoi(s[1]);
 	b = ft_atoi(s[2]);

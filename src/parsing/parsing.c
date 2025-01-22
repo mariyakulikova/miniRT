@@ -6,41 +6,52 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 16:14:43 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:42:59 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	parse_scene_features(t_data *data, char **s)
+static int	parse_scene_features(t_data *data, char **s)
 {
 	if (ft_strcmp(*s, "A") == 0)
 	{
 		if (data->scene->a_light)
-			print_error(-1, "already exist", data);
+			return (1);
 		data->scene->a_light = get_a_light(s);
 		if (!data->scene->a_light)
-			print_error(-1, "get_a_light", data);
+			return (1);
 	}
 	else if (ft_strcmp(*s, "C") == 0)
 	{
 		if (data->scene->camera)
-			print_error(-1, "already exist", data);
+			return (1);
 		data->scene->camera = get_camera(s);
 		if (!data->scene->camera)
-			print_error(-1, "get_camera", data);
+			return (1);
 	}
 	else if (ft_strcmp(*s, "L") == 0)
 	{
 		if (data->scene->light)
-			print_error(-1, "already exist", data);
+			return (1);
 		data->scene->light = get_light(s);
 		if (!data->scene->light)
-			print_error(-1, "get_light", data);
+			return (1);
 	}
+	return (0);
 }
 
-static void	parse_figures(t_data *data, char **s)
+static void	free_helper(char **s, char *l1, char *l2)
+{
+	if (s)
+		ft_free_split(s);
+	if (l1)
+		free(l1);
+	if (l2)
+		free(l2);
+}
+
+static int	parse_figures(t_data *data, char **s)
 {
 	t_figure	*figure;
 	t_list		*node;
@@ -48,8 +59,8 @@ static void	parse_figures(t_data *data, char **s)
 
 	figure = NULL;
 	type = get_ftype(s[0]);
-	if (type == UNDEFINED)
-		print_error(-1, "undefined figure type", data);
+	// if (type == UNDEFINED)
+	// 	print_error(-1, "undefined figure type", data);
 	if (type == SPHERE)
 		figure = get_sphere(type, s);
 	else if (type == PLANE)
@@ -57,33 +68,40 @@ static void	parse_figures(t_data *data, char **s)
 	else if (type == CYLINDER)
 		figure = get_cylinder(type, s);
 	if (!figure)
-		print_error(-1, "malloc", data);
+		return (1);
 	node = ft_lstnew(figure);
 	if (!node)
-		print_error(-1, "malloc", data);
+		return (1);
 	ft_lstadd_back(&data->scene->fugures, node);
+	return (0);
 }
 
-static void	parse_line(char *line, t_data *data)
+static int	parse_line(char *line, t_data *data)
 {
 	char	*str;
 	char	**s;
 
 	str = ft_strtrim(line, " ");
 	if (!str)
-		print_error(-1, "malloc trim", data);
+		return (1);
 	s = ft_split(str, ' ');
 	if (!s)
 	{
 		free(str);
-		print_error(-1, "malloc split", data);
+		return (1);
 	}
-	if (is_upper(s[0][0]))
-		parse_scene_features(data, s);
-	else if (is_lower(s[0][0]))
-		parse_figures(data, s);
-	free(str);
-	ft_free_split(s);
+	if (is_upper(s[0][0]) && parse_scene_features(data, s))
+	{
+		free_helper(s, str, line);
+		return (1);
+	}
+	else if (is_lower(s[0][0]) && parse_figures(data, s))
+	{
+		free_helper(s, str, line);
+		return (1);
+	}
+	free_helper(s, str, line);
+	return (0);
 }
 
 void	read_lines(int fd, t_data *data)
@@ -108,7 +126,7 @@ void	read_lines(int fd, t_data *data)
 			continue ;
 		}
 		replace_tab(line);
-		parse_line(line, data);
-		free(line);
+		if (parse_line(line, data))
+			print_error(-1, "parse_line\n", data);
 	}
 }

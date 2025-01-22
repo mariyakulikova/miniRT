@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 10:55:44 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:55:56 by alvutina         ###   ########.fr       */
+/*   Created: 2024/11/19 15:42:38 by mkulikov          #+#    #+#             */
+/*   Updated: 2025/01/22 21:01:25 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,15 @@ bool	in_range_float(float i, float left, float right)
 
 bool	is_upper(char i)
 {
-	return (('A' <= i) && (i <= 'Z'));
+	return (('A'<= i) && (i <= 'Z'));
+}
+
+int	ft_split_size(char **s)
+{
+	int	size;
+
+	size = 0;
+	while (*(s + size))
+		size++;
+	return (size);
 }

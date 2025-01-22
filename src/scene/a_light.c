@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   a_light.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:54:30 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 10:54:35 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:17:21 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ t_a_light	*get_a_light(char **s)
 	if (!in_range_float(ratio, 0.0f, 1.0f))
 		return (NULL);
 	color = get_color(s[2]);
+	if (!color)
+		return (NULL);
 	a_color = color_by_scaler(color, ratio);
 	if (!color || !a_color)
 		return (NULL);
