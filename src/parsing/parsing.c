@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 17:11:23 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:14:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	parse_scene_features(t_data *data, char **s)
 {
-	if (s[0][0] == 'A')
+	if (ft_strcmp(*s, "A") == 0)
 	{
 		if (data->scene->a_light)
 			print_error(-1, "already exist", data);
@@ -22,7 +22,7 @@ static void	parse_scene_features(t_data *data, char **s)
 		if (!data->scene->a_light)
 			print_error(-1, "get_a_light", data);
 	}
-	else if (s[0][0] == 'C')
+	else if (ft_strcmp(*s, "C") == 0)
 	{
 		if (data->scene->camera)
 			print_error(-1, "already exist", data);
@@ -30,7 +30,7 @@ static void	parse_scene_features(t_data *data, char **s)
 		if (!data->scene->camera)
 			print_error(-1, "get_camera", data);
 	}
-	else if (s[0][0] == 'L')
+	else if (ft_strcmp(*s, "L") == 0)
 	{
 		if (data->scene->light)
 			print_error(-1, "already exist", data);
