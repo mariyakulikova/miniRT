@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:50:34 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 17:13:24 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:40:47 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 # define M_PI 3.14159265358979323846
-# define EPSILON FLT_EPSILON
+# define FLT_MAX 3.40282347e+38F
+# define EPSILON 1.19209290e-7F
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include <math.h>
