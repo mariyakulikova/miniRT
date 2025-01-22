@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 17:01:45 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:11:39 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,24 @@ void	preset_ray_tracing(t_data *d)
 	t_list		*node;
 	t_figure	*f;
 
+	if (!d->scene->camera)
+		return ;
 	d->scene->vplane = get_view_port(d->scene->width, d->scene->hight, \
 	d->scene->camera->fov);
 	node = d->scene->fugures;
 	while (node)
 	{
 		f = (t_figure *)node->content;
-		f->a_color = color_multi(f->color, d->scene->a_light->a_color);
-		f->l_color = color_multi(f->color, d->scene->light->l_color);
+		if (d->scene->a_light)
+			f->a_color = color_multi(f->color, d->scene->a_light->a_color);
+		else
+			f->a_color = new_color(f->color->r, f->color->g, f->color->b);
+		if (d->scene->light)
+			f->l_color = color_multi(f->color, d->scene->light->l_color);
+		else if (d->scene->a_light)
+			f->l_color = new_color(f->color->r, f->color->g, f->color->b);
+		else
+			f->l_color = new_color(f->color->r, f->color->g, f->color->b);
 		if (!f->a_color || !f->l_color)
 			print_error(1, "malloc error\n", d);
 		node = node->next;
@@ -101,6 +111,8 @@ void	ray_tracing(t_data *d)
 {
 	t_ray_tracing_params	params;
 
+	if (!d->scene->camera)
+		return ;
 	params.mlx_y = 0;
 	params.y_angle = (d->scene->hight / 2) + \
 		(d->scene->camera->direction->y * d->scene->hight / 2.0f);

@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:18:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/20 14:21:01 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:43:51 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static bool	is_shadowed(t_data *d, t_vector *p)
 		return (true);
 	return (false);
 }
-
 static void	free_gfc(t_gfc *param)
 {
 	if (param->light_vec)
@@ -80,9 +79,9 @@ static void	free_gfc(t_gfc *param)
 int	get_figure_color(t_vector *ray, t_figure *f, float t, t_data *d)
 {
 	t_gfc	param;
-	int		res;
 
-	res = 0;
+	if (!d->scene->light)
+		return (color_to_int(f->a_color));
 	ft_memset(&param, 0, sizeof(t_gfc));
 	param.p = get_p_point(ray, t, d);
 	param.normal = get_normal(f, param.p, d);
@@ -90,16 +89,16 @@ int	get_figure_color(t_vector *ray, t_figure *f, float t, t_data *d)
 	param.over_p = vec_add(param.p, param.v_tmp);
 	if (is_shadowed(d, param.over_p))
 	{
-		res = color_to_int(f->a_color);
+		param.res = color_to_int(f->a_color);
 		free_gfc(&param);
-		return (res);
+		return (param.res);
 	}
 	param.light_vec = vec_sub(d->scene->light->coord, param.over_p);
 	vec_norm(param.light_vec);
 	param.light_dot_normal = vec_dot_prod(param.light_vec, param.normal);
 	param.diffuse = get_diff_c(d, f, param.light_dot_normal);
 	param.c_tmp = color_add(f->a_color, param.diffuse);
-	res = color_to_int(param.c_tmp);
+	param.res = color_to_int(param.c_tmp);
 	free_gfc(&param);
-	return (res);
+	return (param.res);
 }

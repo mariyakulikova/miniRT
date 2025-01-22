@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figure.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:36:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/21 17:13:38 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/22 19:43:55 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_gfc
 	t_color		*c_tmp;
 	t_vector	*v_tmp;
 	float		light_dot_normal;
+	int			res;
 }	t_gfc;
 
 t_figure	*new_figure(t_figure args);
