@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:05:58 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 19:43:40 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:31:44 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static t_vector	*calculate_cylinder_normal(t_figure *f, t_vector *p)
 {
 	t_vector	*normal;
 	t_vector	*tmp;
+	t_vector	*pro;
 	float		n;
 
-	tmp = vec_sub(f->coord, p);
+	tmp = vec_sub(p, f->coord);
 	vec_norm(f->norm_v3d);
-	n = -vec_dot_prod(tmp, f->norm_v3d);
-	normal = new_vec(\
-		-(f->norm_v3d->x * n + f->coord->x - p->x), \
-		-(f->norm_v3d->y * n + f->coord->y - p->y), \
-		-(f->norm_v3d->z * n + f->coord->z - p->z));
+	n = vec_dot_prod(tmp, f->norm_v3d);
+	pro = vec_by_scaler(f->norm_v3d, n);
+	normal = vec_sub(tmp, pro);
 	free(tmp);
+	free(pro);
 	return (normal);
 }
 
