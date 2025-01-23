@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/23 12:32:28 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:42:47 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	mouse_hook(int button, int x, int y, t_data *data)
 		else
 			data->selected_object = NULL;
 		free(ray_dir);
+		free(data->m_dist.dot_light);
 	}
 	else if (button == 3)
 		data->selected_object = NULL;
