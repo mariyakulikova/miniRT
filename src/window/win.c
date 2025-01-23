@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:52 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/21 16:33:18 by alvutina         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:18:54 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,10 @@ int	close_window(t_data *data)
 	mlx_destroy_display(data->win->mlx_ptr);
 	ultimate_free(data);
 	exit (0);
+}
+
+void	put_image_wrapper(t_data *d)
+{
+	mlx_put_image_to_window(d->win->mlx_ptr, d->win->win_ptr, \
+								d->win->img.ptr, 0, 0);
 }

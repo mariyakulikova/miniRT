@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:42:38 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 21:01:25 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:13:16 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	in_range_float(float i, float left, float right)
 
 bool	is_upper(char i)
 {
-	return (('A'<= i) && (i <= 'Z'));
+	return (('A' <= i) && (i <= 'Z'));
 }
 
 int	ft_split_size(char **s)

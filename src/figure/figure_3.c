@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:18:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 19:43:51 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:13:46 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static bool	is_shadowed(t_data *d, t_vector *p)
 		return (true);
 	return (false);
 }
+
 static void	free_gfc(t_gfc *param)
 {
 	if (param->light_vec)

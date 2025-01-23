@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/23 11:54:03 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:14:17 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ static int	parse_figures(t_data *data, char **s)
 
 	figure = NULL;
 	type = get_ftype(s[0]);
-	// if (type == UNDEFINED)
-	// 	print_error(-1, "undefined figure type", data);
 	if (type == SPHERE)
 		figure = get_sphere(type, s);
 	else if (type == PLANE)
@@ -103,8 +101,6 @@ static int	parse_line(char *line, t_data *data)
 	free_helper(s, str, line);
 	return (0);
 }
-
-
 
 void	read_lines(int fd, t_data *data)
 {

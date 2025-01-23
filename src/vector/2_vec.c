@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:33:36 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 21:01:32 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:12:43 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_vector	*get_vec_with_check(float x, float y, float z)
 	if (in_range_float(x, -1.0f, 1.0f) \
 			&& in_range_float(y, -1.0f, 1.0f) \
 			&& in_range_float(z, -1.0f, 1.0f))
-			return (new_vec(x, y, z));
+		return (new_vec(x, y, z));
 	else
 		return (NULL);
 }

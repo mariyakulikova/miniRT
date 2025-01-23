@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 12:14:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 18:11:39 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:18:59 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,5 @@ void	ray_tracing(t_data *d)
 		params.y_angle--;
 		params.mlx_y++;
 	}
-	mlx_put_image_to_window(d->win->mlx_ptr, d->win->win_ptr, \
-							d->win->img.ptr, 0, 0);
+	put_image_wrapper(d);
 }
