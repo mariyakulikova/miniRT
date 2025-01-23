@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:33:57 by mkulikov          #+#    #+#             */
-/*   Updated: 2025/01/22 21:42:59 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:54:03 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ static int	parse_line(char *line, t_data *data)
 	return (0);
 }
 
+
+
 void	read_lines(int fd, t_data *data)
 {
 	int		len;
@@ -127,6 +129,6 @@ void	read_lines(int fd, t_data *data)
 		}
 		replace_tab(line);
 		if (parse_line(line, data))
-			print_error(-1, "parse_line\n", data);
+			read_lines_on_error(fd, data);
 	}
 }
