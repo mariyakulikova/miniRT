@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 16:38:08 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 17:57:08 by mkulikov         ###   ########.fr       */
+/*   Created: 2025/01/21 10:51:29 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/23 11:54:20 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 # define PARSING_H
 
 void	read_file(char *file, t_data *data);
+void	read_lines(int fd, t_data *data);
+void	read_lines_on_error(int fd, t_data *d);
 
 #endif

@@ -5,12 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 13:26:30 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:42:37 by mkulikov         ###   ########.fr       */
+/*   Created: 2025/01/21 10:56:52 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/23 12:18:54 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	my_pixel_put(t_img *img, int x, int y, int color)
+{
+	int	offset;
+
+	if (x < 0 || x >= WIDTH || y < 0 || y >= HIGHT)
+		return ;
+	offset = (img->line_len * y) + (x * (img->bpp / 8));
+	*((unsigned int *)(img->addr + offset)) = color;
+}
 
 void	start_mlx(t_data *data)
 {
@@ -26,7 +36,8 @@ void	start_mlx(t_data *data)
 									&data->win->img.bpp, \
 									&data->win->img.line_len, \
 									&data->win->img.endian);
-	mlx_key_hook(data->win->win_ptr, key_hook, data);
+	mlx_mouse_hook(data->win->win_ptr, mouse_hook, data);
+	mlx_hook(data->win->win_ptr, KeyPress, KeyPressMask, key_hook, data);
 	mlx_hook(data->win->win_ptr, DestroyNotify, 0, close_window, data);
 }
 
@@ -36,10 +47,12 @@ int	close_window(t_data *data)
 	mlx_destroy_image(data->win->mlx_ptr, data->win->img.ptr);
 	mlx_destroy_window(data->win->mlx_ptr, data->win->win_ptr);
 	mlx_destroy_display(data->win->mlx_ptr);
-	// TODO free t_data and others it has
-	free(data->win);
-	free(data->scene);
-	free(data);
+	ultimate_free(data);
 	exit (0);
 }
 
+void	put_image_wrapper(t_data *d)
+{
+	mlx_put_image_to_window(d->win->mlx_ptr, d->win->win_ptr, \
+								d->win->img.ptr, 0, 0);
+}

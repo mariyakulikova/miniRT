@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   view_port.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 16:33:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 11:56:43 by mkulikov         ###   ########.fr       */
+/*   Created: 2025/01/21 10:54:17 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/21 16:32:23 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vport	*get_view_port(float width, float hight)
+t_vport	*get_view_port(float width, float hight, float fov)
 {
 	t_vport	*vp;
 	float	aspect_ratio;
@@ -21,10 +21,9 @@ t_vport	*get_view_port(float width, float hight)
 	if (!vp)
 		return (NULL);
 	aspect_ratio = width / hight;
-	vp->width = 1;
+	vp->width = 2 * tanf((fov / 2) * (M_PI / 180));
 	vp->hight = vp->width / aspect_ratio;
 	vp->x_pixel = vp->width / width;
 	vp->y_pixel = vp->hight / hight;
 	return (vp);
 }
-

@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:40:53 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/12/02 13:22:21 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:25:34 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-t_sphere	*new_sphere(t_vector *center, float radius)
-{
-	t_sphere	*sphere;
-
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
-		return (NULL);
-	sphere->center = center;
-	sphere->radius = radius;
-	return (sphere);
-}
 
 t_figure	*get_sphere(t_ftype type, char **s)
 {
@@ -40,30 +28,30 @@ t_figure	*get_sphere(t_ftype type, char **s)
 		return (NULL);
 	}
 	d = ft_atof(s[2]);
-	return (new_figure((t_figure){type, NULL, coord, color, d, d}));
+	return (new_figure((t_figure){type, NULL, coord, color, NULL, NULL, d, d}));
 }
 
-int	sphere_intersect(t_camera *camera, t_vector *ray, t_figure *sphere)
+float	sphere_intersect(t_vector *camera, t_vector *ray, t_figure *sphere)
 {
-	float		b;
-	float		c;
-	float		discr;
-	float		dist_1;
-	// float		dist_2;
-	t_vector	*camera_sphere;
+	t_sphere_intersect	si;
+	t_vector			*camera_sphere;
 
-	dist_1 = 0;
-	// dist_2 = 0;
-	camera_sphere = vec_sub(camera->origin, sphere->coord);
-	b = 2 * (vec_dot_prod(camera_sphere, ray));
-	c = vec_dot_prod(camera_sphere, camera_sphere) - (sqrtf(sphere->diameter / 2));
-	discr = (b * b) - (4 * c);
-	free(camera_sphere);
-	if (discr < 0)
+	camera_sphere = vec_sub(camera, sphere->coord);
+	si.dist_squared = vec_dot_prod(camera_sphere, camera_sphere);
+	si.radius_squared = powf(sphere->diameter / 2.0f, 2.0f);
+	if (si.dist_squared < si.radius_squared)
+	{
+		free(camera_sphere);
 		return (0);
-	dist_1 = ((b * (-1)) - sqrt(discr)) / 2;
-	// dist_2 = ((b * (-1)) - sqrt(discr)) / 2;
-	if (dist_1 > 0)
-		return (1);
+	}
+	si.b = 2.0f * vec_dot_prod(camera_sphere, ray);
+	si.c = si.dist_squared - si.radius_squared;
+	si.discr = powf(si.b, 2.0f) - 4.0f * si.c;
+	free(camera_sphere);
+	if (si.discr < 0)
+		return (0);
+	si.dist_1 = (-si.b - sqrtf(si.discr)) / 2.0f;
+	if (si.dist_1 > 0)
+		return (si.dist_1);
 	return (0);
 }

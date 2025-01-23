@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:44:00 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:23:44 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:01:08 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@ bool	is_upper(char i);
 bool	is_lower(char i);
 float	ft_atof(char *str);
 void	ft_free_split(char **s);
+void	replace_tab(char *s);
+void	ultimate_free(t_data *data);
+int		ft_split_size(char **s);
 
 #endif

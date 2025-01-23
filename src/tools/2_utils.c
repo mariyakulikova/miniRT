@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   2_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: alvutina <alvutina@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 17:16:18 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/29 13:23:21 by mkulikov         ###   ########.fr       */
+/*   Created: 2025/01/21 10:56:01 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/21 10:56:04 by alvutina         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	print_error(int i, char *msg, t_data *data)
+{
+	if (i == -1)
+	{
+		write(STDERR_FILENO, "Error\n", 6);
+		if (msg)
+			write(STDERR_FILENO, msg, ft_strlen(msg));
+	}
+	if (data)
+		ultimate_free(data);
+	exit(i);
+}
+
+void	replace_tab(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (*(s + i))
+	{
+		if (*(s + i) == '\f' \
+			|| *(s + i) == '\r' \
+			|| *(s + i) == '\t' \
+			|| *(s + i) == '\v')
+			*(s + i) = ' ';
+		i++;
+	}
+}
 
 bool	is_lower(char i)
 {

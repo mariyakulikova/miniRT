@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   figure.c                                           :+:      :+:    :+:   */
+/*   figure_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 17:50:01 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 20:58:24 by mkulikov         ###   ########.fr       */
+/*   Created: 2025/01/21 10:53:29 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/22 17:55:31 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ t_figure	*new_figure(t_figure args)
 	figure->color = args.color;
 	figure->hight = args.hight;
 	figure->diameter = args.diameter;
+	figure->l_color = NULL;
+	figure->a_color = NULL;
 	return (figure);
 }

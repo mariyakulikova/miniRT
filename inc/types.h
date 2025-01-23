@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 15:19:03 by mkulikov          #+#    #+#             */
-/*   Updated: 2024/11/27 17:02:04 by mkulikov         ###   ########.fr       */
+/*   Created: 2025/01/21 10:52:23 by alvutina          #+#    #+#             */
+/*   Updated: 2025/01/22 12:33:56 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ typedef struct s_sphere
 
 typedef struct s_color
 {
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
+	float	r;
+	float	g;
+	float	b;
 }	t_color;
 
 typedef enum e_ftype
@@ -45,16 +45,46 @@ typedef enum e_ftype
 	CYLINDER
 }	t_ftype;
 
+typedef struct s_translation
+{
+	float	tx;
+	float	ty;
+	float	tz;
+}	t_translation;
+
+typedef struct s_cylinder_intersect
+{
+	float		a;
+	float		b;
+	float		c;
+	float		discriminant;
+	float		t1;
+	float		t2;
+	float		m;
+	t_vector	*camera_to_cylinder;
+}	t_cylinder_intersect;
+
+typedef struct s_sphere_intersect
+{
+	float	b;
+	float	c;
+	float	discr;
+	float	dist_1;
+	float	dist_squared;
+	float	radius_squared;
+}	t_sphere_intersect;
+
 typedef struct s_figure
 {
 	t_ftype		type;
 	t_vector	*norm_v3d;
 	t_vector	*coord;
 	t_color		*color;
+	t_color		*a_color;
+	t_color		*l_color;
 	float		hight;
 	float		diameter;
 }	t_figure;
-
 
 typedef struct s_vport
 {
@@ -75,6 +105,7 @@ typedef struct s_a_light
 {
 	float	ratio;
 	t_color	*color;
+	t_color	*a_color;
 }	t_a_light;
 
 typedef struct s_light
@@ -82,6 +113,7 @@ typedef struct s_light
 	float		ratio;
 	t_vector	*coord;
 	t_color		*color;
+	t_color		*l_color;
 }	t_light;
 
 typedef struct s_scene
@@ -89,11 +121,21 @@ typedef struct s_scene
 	t_camera	*camera;
 	t_sphere	*sphere;
 	t_a_light	*a_light;
-	t_light	*light;
+	t_light		*light;
+	t_list		*fugures;
 	float		width;
 	float		hight;
-	t_list		*fugures;
+	t_vport		*vplane;
 }	t_scene;
+
+typedef struct s_dist
+{
+	float			min_dist;
+	float			dist;
+	int				near_obj;
+	t_figure		*n_obj;
+	t_vector		*dot_light;
+}	t_dist;
 
 typedef struct s_img
 {
@@ -104,7 +146,8 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct s_window {
+typedef struct s_window
+{
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
@@ -122,6 +165,8 @@ typedef struct s_data
 {
 	t_window	*win;
 	t_scene		*scene;
+	t_dist		m_dist;
+	t_figure	*selected_object;
 }	t_data;
 
 #endif
