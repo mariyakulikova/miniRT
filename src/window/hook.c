@@ -6,7 +6,7 @@
 /*   By: mkulikov <mkulikov@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 10:56:23 by alvutina          #+#    #+#             */
-/*   Updated: 2025/01/22 16:39:08 by mkulikov         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:32:28 by mkulikov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ static void	ft_key_hook_light(int keycode, t_data *data)
 		data->scene->light->coord->z += 1;
 	if (keycode == XK_c)
 		data->scene->light->coord->z -= 1;
-	if (keycode == XK_KP_7)
-		rotate_x(data->scene->light->coord, 10.0);
-	if (keycode == XK_KP_8)
-		rotate_y(data->scene->light->coord, 10.0);
-	if (keycode == XK_KP_9)
-		rotate_z(data->scene->light->coord, 10.0);
 }
 
 int	key_hook(int keycode, t_data *data)
